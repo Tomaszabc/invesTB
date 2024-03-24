@@ -1,0 +1,12 @@
+body {
+  background-color: #181A20;
+  color: #838D9B;
+}
+.top-bar {
+  height: 80px;
+  background-color: #0A0E11;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 4rem;
+}
