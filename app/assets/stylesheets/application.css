@@ -13,4 +13,5 @@
  *= require_tree .
  *= require_self
  *= require custom_styles
+ *= require menu_button
  */

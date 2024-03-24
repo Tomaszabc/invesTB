@@ -6,18 +6,16 @@
       <%= link_to 'Zarejestruj się', root_path, class: "bg-yellow-400 text-black font-bold py-2 px-4 rounded transition duration-300 ease-in-out hover:bg-yellow-500" %>
     </div>
     
-    <div class="">
-      <button class="more-button" aria-label="Menu Button">
-        <div class="menu-icon-wrapper">
-          <div class="menu-icon-line half first"></div>
-          <div class="menu-icon-line"></div>
-          <div class="menu-icon-line half last"></div>
-        </div>
-      </button>
-    </div>
-  </div>
-  
-  <div class="list-container  sm:flex">
+
+
+  <div class="list-container md:hidden">
+    <button class="more-button" aria-label="Menu Button">
+      <div class="menu-icon-wrapper">
+        <div class="menu-icon-line half first"></div>
+        <div class="menu-icon-line"></div>
+        <div class="menu-icon-line half last"></div>
+      </div>
+    </button>
     <ul class="more-button-list">
       <li class="more-button-list-item">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
@@ -45,7 +43,7 @@
         </svg>
         <span>Delete</span>
       </li>
-    </div>
+    </d>
   </div>
   <div class="socials">
     <a class="social-link" href="https://twitter.com/aybukeceylan" target="_top">
@@ -60,9 +58,13 @@
 </nav>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('.more-button').addEventListener('click', function () {
-        document.querySelector('.list-container').classList.toggle('active');
-    });
+
+
+document.querySelector('.more-button').addEventListener('click', function () {
+    console.log("Button clicked");
+    document.querySelector('.list-container').classList.toggle('active');
+    console.log("Active class toggled");
 });
+
+
 </script>
