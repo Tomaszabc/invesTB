@@ -1,18 +1,20 @@
 document.addEventListener('turbo:load', attachEventListeners);
 
 function attachEventListeners() {
-  // Attach the event listener to the login button
   const loginButton = document.getElementById('loginButton');
+  const loginModal = document.getElementById('loginModal');
+
   if (loginButton) {
-    loginButton.addEventListener('click', toggleLoginModal);
+    loginButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      loginModal.classList.toggle('hidden');
+    });
   }
 
-  // Define the function to toggle the login modal
-  function toggleLoginModal(event) {
-    event.preventDefault();
-    const loginModal = document.getElementById('loginModal');
-    if (loginModal) {
-      loginModal.classList.toggle('hidden');
+  // Close modal on click outside
+  document.addEventListener('click', function(event) {
+    if (!loginModal.contains(event.target) && !loginButton.contains(event.target)) {
+      loginModal.classList.add('hidden');
     }
-  }
+  });
 }
