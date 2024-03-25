@@ -54,8 +54,8 @@ body_old {
 
 .more-button {
   background-color: rgb(250 204 21);
-  box-shadow: 0px 0px 0px 4px rgb(153, 135, 63);
-  border-radius: 80%;
+  box-shadow: 0px 0px 02px 6px rgb(153, 135, 63);
+  border-radius: 60%;
   width: 50px;
   height: 50px;
   border: none;
@@ -70,8 +70,8 @@ body_old {
   
 }
 .more-button:hover, .more-button:focus {
-  box-shadow: 0px 0px 0px 8px rgb(250 204 21);
-  background-color: rgb(153, 135, 63);
+  box-shadow: 0px 0px 0px 6px rgb(250 204 21);
+  background-color: rgb(214, 179, 39);
 }
 .more-button:focus {
   outline: 0;
