@@ -17,4 +17,5 @@ document.addEventListener('turbo:load', function() {
     event.stopPropagation(); 
   });
 
+  
 });

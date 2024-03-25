@@ -12,6 +12,9 @@
 
   <body>
     <%= render 'shared/navbar' %>
+    <div id="loginModal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <%= render 'shared/login_modal' %>
+    </div>
     <div class="top-bar">
       <h1 class=" max-w-5xl font-bold text-4xl max-w-[800px] mx-auto w-full" style="color: #848E9C;"><%= "" %></h1>
     </div>
@@ -20,3 +23,7 @@
     </main>
   </body>
 </html>
+
+<script>
+
+</script>
