@@ -8,11 +8,12 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= preload_link_tag 'application', as: 'style' %>
   </head>
 
   <body>
     <%= render 'shared/navbar' %>
-    <div id="loginModal" class="hidden fixed inset-0 flex items-center justify-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="loginModal" class="hidden  fixed inset-0 flex items-center justify-center " aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div class="bg-zinc-600 rounded-lg overflow-hidden shadow-xl" style="width: 400px; height: 500px;">
       <%= render 'shared/login_modal' %>
       </div>
