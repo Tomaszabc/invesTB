@@ -15,3 +15,8 @@
  *= require custom_styles
  *= require menu_button
  */
+
+ @font-face {
+    font-family: 'Anta-Regular';
+    src: url('Anta-Regular.ttf') format('truetype');
+}

@@ -11,3 +11,11 @@ body {
   padding-left: 4rem;
 }
 
+.anta-regular {
+  font-family: 'Anta-Regular', sans-serif;
+}
+
+.anta-italic {
+  font-family: 'Anta-Regular', sans-serif;
+  font-style: italic;
+}

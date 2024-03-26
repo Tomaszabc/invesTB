@@ -1,9 +1,8 @@
 <nav class="navbar-sticky bg-[#181A20]">
   <div class="container mx-auto flex justify-between items-center px-6 py-4 max-w-5xl">
-    <%= link_to 'InvesTB', root_path, class: "text-[#EAECEF] hover:text-white transition-colors text-xl" %> 
+  <%= render "shared/logo"%>
     <div class="hidden md:flex">
-      <%= link_to 'Logowanie', root_path, class: "text-[#EAECEF] hover:text-white transition-colors mr-2 mt-2", id: "loginButton" %>
-      <%= link_to 'Zarejestruj się', root_path, data: { turbo: false },  class: "bg-yellow-400 text-black font-bold py-2 px-4 rounded transition duration-300 ease-in-out hover:bg-yellow-500" %>
+      <%= render "shared/menu_md"%>
     </div>
     <div class="list-container md:hidden">
       <%= render "shared/menu_button" %>
