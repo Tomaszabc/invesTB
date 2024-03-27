@@ -2,32 +2,23 @@ document.addEventListener('turbo:load', attachEventListeners);
 
 function attachEventListeners() {
   const loginModal = document.getElementById('loginModal');
-  const modalContent = document.querySelector('.modal-content'); // Zakładając, że masz kontener modalu o tej klasie.
+  const closeModalTrigger = document.querySelector('.close-modal-trigger');
 
+  // Find all buttons that could open the modal and attach click event listeners
   document.querySelectorAll('.login-trigger').forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
       loginModal.classList.remove('opacity-0', 'pointer-events-none');
+      closeModalTrigger.classList.add('animate-bounce'); // Add the bounce animation
     });
   });
 
-  document.querySelectorAll('.close-modal-trigger').forEach(button => {
-    button.addEventListener('click', function(event) {
-      event.preventDefault();
-      closeModal();
-    });
+  // Add event listener to the close button
+  closeModalTrigger.addEventListener('click', function(event) {
+    event.preventDefault();
+    loginModal.classList.add('opacity-0', 'pointer-events-none');
+    this.classList.remove('animate-bounce'); // Remove the bounce animation
   });
 
-  document.addEventListener('click', function(event) {
-    // Sprawdzamy, czy kliknięto poza obszarem treści modalu.
-    if (loginModal.contains(event.target) && !modalContent.contains(event.target)) {
-      closeModal();
-    }
-  });
-
-  function closeModal() {
-    loginModal.classList.add('opacity-0');
-    // Opóźnienie dodania klasy pointer-events-none, aby umożliwić zakończenie przejścia opacności
-    setTimeout(() => loginModal.classList.add('pointer-events-none'), 300);
-  }
+  // If there is any other way to close the modal, make sure to remove the bounce animation there as well
 }
