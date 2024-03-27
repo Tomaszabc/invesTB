@@ -2,26 +2,32 @@ document.addEventListener('turbo:load', attachEventListeners);
 
 function attachEventListeners() {
   const loginModal = document.getElementById('loginModal');
-  const closeModalTriggers = document.querySelectorAll('.close-modal-trigger');
-  
+  const modalContent = document.querySelector('.modal-content'); // Zakładając, że masz kontener modalu o tej klasie.
+
   document.querySelectorAll('.login-trigger').forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
-      loginModal.classList.toggle('hidden');
+      loginModal.classList.remove('opacity-0', 'pointer-events-none');
     });
   });
 
-  closeModalTriggers.forEach(button => {
+  document.querySelectorAll('.close-modal-trigger').forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
-      loginModal.classList.add('hidden');
+      closeModal();
     });
   });
-  
-  // Close modal on click outside
+
   document.addEventListener('click', function(event) {
-    if (!loginModal.contains(event.target) && !event.target.closest('.login-trigger')) {
-      loginModal.classList.add('hidden');
+    // Sprawdzamy, czy kliknięto poza obszarem treści modalu.
+    if (loginModal.contains(event.target) && !modalContent.contains(event.target)) {
+      closeModal();
     }
   });
+
+  function closeModal() {
+    loginModal.classList.add('opacity-0');
+    // Opóźnienie dodania klasy pointer-events-none, aby umożliwić zakończenie przejścia opacności
+    setTimeout(() => loginModal.classList.add('pointer-events-none'), 300);
+  }
 }

@@ -18,11 +18,7 @@ document.addEventListener('turbo:load', function() {
     event.stopPropagation(); 
   });
   const modalBg = document.getElementById('loginModal');
-  modalBg.addEventListener('click', function(event) {
-    if (event.target === modalBg) {
-      modalBg.classList.add('hidden');
-    }
-  });
+ 
 
   // Prevent event from closing modal when clicking inside the modal box
   const modalBox = modalBg.querySelector('.bg-zinc-600');

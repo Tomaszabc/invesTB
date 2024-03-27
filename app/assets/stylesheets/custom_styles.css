@@ -1,6 +1,7 @@
 body {
   background-color: #181A20;
   color: #838D9B;
+  min-height: 800px;
 }
 .top-bar {
   height: 80px;
