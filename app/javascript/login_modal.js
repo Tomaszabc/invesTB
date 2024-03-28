@@ -8,7 +8,7 @@ function attachEventListeners() {
   document.querySelectorAll('.login-trigger').forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
-      loginModal.classList.remove('opacity-0', 'pointer-events-none');
+      loginModal.classList.remove('hidden');
       closeModalTrigger.classList.add('animate-bounce'); // Add the bounce animation
     });
   });
@@ -16,7 +16,7 @@ function attachEventListeners() {
   // Add event listener to the close button
   closeModalTrigger.addEventListener('click', function(event) {
     event.preventDefault();
-    loginModal.classList.add('opacity-0', 'pointer-events-none');
+    loginModal.classList.add('hidden');
     this.classList.remove('animate-bounce'); // Remove the bounce animation
   });
 
