@@ -1,2 +1,6 @@
-<%= link_to 'Logowanie', 'javascript:void(0);', class: "text-[#EAECEF] hover:text-white transition-colors mr-2 mt-2 login-trigger" %>
-<%= link_to 'Zarejestruj się', root_path, data: { turbo: false },  class: "bg-yellow-400 text-black font-bold py-2 px-4 rounded transition duration-300 ease-in-out hover:bg-yellow-500" %>
+<% if user_signed_in? %>
+  <%= link_to 'Wyloguj się', destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Wylogować?' }, class: "bg-red-500 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out hover:bg-red-700" %>
+<% else %>
+  <%= link_to 'Logowanie', new_user_session_path, class: "text-[#EAECEF] hover:text-white transition-colors mr-2 mt-2 login-trigger" %>
+  <%= link_to 'Zarejestruj się', new_user_registration_path, class: "bg-yellow-400 text-black font-bold py-2 px-4 rounded transition duration-300 ease-in-out hover:bg-yellow-500" %>
+<% end %>
