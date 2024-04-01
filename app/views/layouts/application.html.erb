@@ -12,11 +12,9 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <div id="loginModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-      <div class="bg-zinc-600 rounded-lg overflow-hidden shadow-xl sm:max-w-xs sm:max-w-90vh sm:max-h-80vh md:max-w-md md:h-auto md:w-auto" style="width: 500px; height: 400px;">
-      <%= render 'shared/login_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
-      </div>
-    </div>
+    <%= turbo_frame_tag "login_modal" do %>
+        <%= render 'shared/login_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
+    <% end %>
     <div class="top-bar">
       <h1 class=" max-w-5xl font-bold text-4xl max-w-[800px] mx-auto w-full" style="color: #848E9C;"><%= "" %>
         <% if current_user %>
