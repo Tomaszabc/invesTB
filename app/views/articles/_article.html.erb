@@ -1,16 +1,23 @@
-<%= link_to article_path(article), id: dom_id(article), class: " block " do %>
+<%= link_to article_path(article), id: dom_id(article), class: "block" do %>
   <div class="max-w-xl mx-auto overflow-hidden">
+    <div class="flex flex-col justify-between"> 
+      <div>
+        <p class="my-2">
+          <%= image_tag 'https://media1.money.ca/a/29198/borrow-to-invest_facebook_thumb_1200x628_v20230704130851.jpg', alt: 'Opis obrazka', class: "rounded w-full" %>
+        </p>
 
-    <p class="my-2">
-      <%= image_tag 'https://media1.money.ca/a/29198/borrow-to-invest_facebook_thumb_1200x628_v20230704130851.jpg', width: '300', height: '100', alt: 'Opis obrazka', class: "rounded w-full" %>
-    </p>
+        <p class="my-3 text-lg text-slate-300">
+          <strong><%= article.title %></strong>
+        </p>
 
-    <p class="my-4 text-lg">
-      <%= article.title %>
-    </p>
+        <p class="">
+          <%= truncate(article.content, length: 100) %> 
+        </p>
+      </div>
 
-    <p class="my-5">
-      <%= truncate(article.content, length: 100) %> 
-    </p>
+      <p class="text-sm text-slate-400 self-end">
+        <strong><%= article.created_at.strftime('%d-%m-%Y') %></strong>
+      </p>
+    </div>
   </div>
 <% end %>
