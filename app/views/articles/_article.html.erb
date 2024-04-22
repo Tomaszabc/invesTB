@@ -1,17 +1,16 @@
-<div id="<%= dom_id article %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= article.title %>
-  </p>
+<%= link_to article_path(article), id: dom_id(article), class: " block " do %>
+  <div class="max-w-xl mx-auto overflow-hidden">
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Content:</strong>
-    <%= article.content %>
-  </p>
+    <p class="my-2">
+      <%= image_tag 'https://media1.money.ca/a/29198/borrow-to-invest_facebook_thumb_1200x628_v20230704130851.jpg', width: '300', height: '100', alt: 'Opis obrazka', class: "rounded w-full" %>
+    </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this article", article, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this article", edit_article_path(article), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+    <p class="my-4 text-lg">
+      <%= article.title %>
+    </p>
+
+    <p class="my-5">
+      <%= truncate(article.content, length: 100) %> 
+    </p>
+  </div>
+<% end %>
