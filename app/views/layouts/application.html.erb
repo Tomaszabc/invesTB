@@ -12,16 +12,7 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <%= turbo_frame_tag "login_modal" do %>
-        <%= render 'shared/login_modal', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
-    <% end %>
-    <div class="top-bar">
-      <h1 class=" max-w-2xl font-bold text-4xl max-w-[800px] mx-auto w-full" style="color: #848E9C;"><%= "" %>
-        <% if current_user %>
-          <%= current_user.email %>
-        <% end %>
-      </h1>
-    </div>
+    <%= render 'shared/top-bar'%>
     <main class="container mx-auto mt-8 px-3 flex max-w-2xl">
       <%= yield %>
     </main>

@@ -1,0 +1,10 @@
+    <div class="top-bar">
+      <div class="container mx-auto flex justify-between items-center max-w-xl">
+        <% if controller_name == 'articles' && action_name == 'show' %>
+          <%= link_to '&larr;'.html_safe, articles_path, class: "text-2xl text-slate-300 ml-4" %>
+        <% end %>
+        <p class="text-lg text-slate-300 mr-4">
+          <strong><%= @article.title if defined?(@article) %></strong>
+        </p>
+      </div>
+    </div>

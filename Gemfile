@@ -75,6 +75,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "devise", github: 'heartcombo/devise', branch: 'main'
+gem "devise", github: "heartcombo/devise", branch: "main"
 
 gem "dockerfile-rails", ">= 1.6", group: :development
