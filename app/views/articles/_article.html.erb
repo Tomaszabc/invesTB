@@ -11,7 +11,7 @@
         </p>
 
         <p class="">
-          <%= truncate(article.content, length: 100) %> 
+          <%= truncate(article.content.to_plain_text, length: 100) %> 
         </p>
       </div>
 
