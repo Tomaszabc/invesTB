@@ -2,11 +2,15 @@
     <div class="flex flex-col justify-between"> 
       <div>
         <p class="my-2">
-          <%= image_tag 'https://media1.money.ca/a/29198/borrow-to-invest_facebook_thumb_1200x628_v20230704130851.jpg', alt: 'Opis obrazka', class: "rounded w-full" %>
+                   <% if @article.article_image.attached? %>
+            <%= image_tag @article.article_image, alt: 'Artykuł', class: "rounded w-full" %>
+          <% else %>
+            <%= image_tag 'bull.png', alt: 'Artykuł', class: "rounded w-full" %>
+          <% end %>
         </p>
         
 
-        <p class="text-sm text-slate-400 text-right">
+        <p class="text-sm text-slate-400 text-right  mr-4">
         <strong><%= @article.created_at.strftime('%d-%m-%Y') %></strong>
       </p>
 
