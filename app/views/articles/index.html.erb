@@ -1,11 +1,13 @@
-<div class="w-full max-w-2xl mx-auto">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-  <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-2">
-    Najnowsze wpisy:
-  </p>
-  <div id="articles" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <%= render @articles %>
+<turbo-frame id="main-frame">
+  <div class="w-full max-w-2xl mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+    <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-2">
+      Najnowsze wpisy:
+    </p>
+    <div id="articles" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <%= render @articles %>
+    </div>
   </div>
-</div>
+</turbo-frame>

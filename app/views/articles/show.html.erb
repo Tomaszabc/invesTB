@@ -1,37 +1,39 @@
- <div class="mb-4">
- <% if controller_name == 'articles' && action_name == 'show' && defined?(@article) %>
-      <div class="flex justify-between items-center w-full">
-        <%= link_to '&larr; Powrót'.html_safe, articles_path, class: "text-lg  text-slate-300 ml-4 duration-300 hover:opacity-90" %>
-        <div class="flex-grow"></div>
-        <p class="text-lg text-slate-400 mr-12">
-          <%= @article.title %>
+<turbo-frame id="main-frame">
+  <div class="mb-4">
+  <% if controller_name == 'articles' && action_name == 'show' && defined?(@article) %>
+        <div class="flex justify-between items-center w-full">
+          <%= link_to '&larr; Powrót'.html_safe, articles_path, class: "text-lg  text-slate-300 ml-4 duration-300 hover:opacity-90" %>
+          <div class="flex-grow"></div>
+          <p class="text-lg text-slate-400 mr-12">
+            <%= @article.title %>
+          </p>
+          <div class="w-18"></div>
+        </div>
+    <%end%>
+  </div>
+  <div class="max-2w-xl mx-auto overflow-hidden">
+      <div class="flex flex-col justify-between"> 
+        <div>
+          <p class="my-2">
+                    <% if @article.article_image.attached? %>
+              <%= image_tag @article.article_image, alt: 'Artykuł', class: "rounded w-full" %>
+            <% else %>
+              <%= image_tag 'bull.png', alt: 'Artykuł', class: "rounded w-full" %>
+            <% end %>
+          </p>
+          
+
+          <p class="text-sm text-slate-400 text-right  mr-4">
+          <strong><%= @article.created_at.strftime('%d-%m-%Y') %></strong>
         </p>
-        <div class="w-18"></div>
-      </div>
-  <%end%>
-</div>
- <div class="max-2w-xl mx-auto overflow-hidden">
-    <div class="flex flex-col justify-between"> 
-      <div>
-        <p class="my-2">
-                   <% if @article.article_image.attached? %>
-            <%= image_tag @article.article_image, alt: 'Artykuł', class: "rounded w-full" %>
-          <% else %>
-            <%= image_tag 'bull.png', alt: 'Artykuł', class: "rounded w-full" %>
-          <% end %>
-        </p>
+
         
 
-        <p class="text-sm text-slate-400 text-right  mr-4">
-        <strong><%= @article.created_at.strftime('%d-%m-%Y') %></strong>
-      </p>
+          <p class="my-6 text-slate-400">
+            <%= @article.content %> 
+          </p>
+        </div>
 
-       
-
-        <p class="my-6 text-slate-400">
-          <%= @article.content %> 
-        </p>
       </div>
-
     </div>
-  </div>
+</turbo-frame>
