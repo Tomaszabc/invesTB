@@ -1,20 +1,24 @@
 <div class="top-bar">
-  <div class="container mx-auto max-w-xl">
-    <% if controller_name == 'articles' && action_name == 'show' && defined?(@article) %>
-        <div class="flex justify-between items-center w-full">
-          <%= link_to '&larr;'.html_safe, articles_path, class: "text-2xl text-slate-300 ml-4 duration-300 hover:opacity-90" %>
-          <div class="flex-grow"></div>
-          <p class="text-lg text-slate-400 mr-4">
-            <%= @article.title %>
-          </p>
-          <div class="w-18"></div>
-        </div>
-      <% elsif controller_name == 'articles' && action_name == 'index' %>
-        <div class="text-right">
-          <p class="text-lg text-slate-400 mr-10 duration-300 hover:opacity-90">
-            Blog
-          </p>
-        </div>
-    <% end %>
+  <div class="container mx-auto">
+
+      <div class="tradingview-widget-container w-full">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index"},
+            {"proName": "FOREXCOM:NSXUSD", "title": "US 100 Cash CFD"},
+            {"proName": "FX_IDC:EURUSD", "title": "EUR to USD"},
+            {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
+            {"proName": "BITSTAMP:ETHUSD", "title": "Ethereum"}
+          ],
+          "showSymbolLogo": true,
+          "isTransparent": true,
+          "displayMode": "regular",
+          "colorTheme": "dark",
+          "locale": "pl"
+        }
+        </script>
+      </div>
   </div>
 </div>

@@ -1,4 +1,16 @@
- <div class="max-w-xl mx-auto overflow-hidden">
+ <div class="mb-4">
+ <% if controller_name == 'articles' && action_name == 'show' && defined?(@article) %>
+      <div class="flex justify-between items-center w-full">
+        <%= link_to '&larr; Powrót'.html_safe, articles_path, class: "text-lg  text-slate-300 ml-4 duration-300 hover:opacity-90" %>
+        <div class="flex-grow"></div>
+        <p class="text-lg text-slate-400 mr-12">
+          <%= @article.title %>
+        </p>
+        <div class="w-18"></div>
+      </div>
+  <%end%>
+</div>
+ <div class="max-2w-xl mx-auto overflow-hidden">
     <div class="flex flex-col justify-between"> 
       <div>
         <p class="my-2">

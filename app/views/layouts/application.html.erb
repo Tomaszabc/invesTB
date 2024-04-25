@@ -8,12 +8,12 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= render 'shared/navbar' %>
+       <%= render 'shared/navbar' %>
     <%= render 'shared/top-bar'%>
-    <main class="container mx-auto mt-8 px-3 flex max-w-2xl mb-12">
+  </head>
+ 
+  <body>
+    <main class="container mx-auto mt-8 px-3  max-w-2xl">
       <%= yield %>
     </main>
   </body>

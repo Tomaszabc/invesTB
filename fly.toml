@@ -27,6 +27,3 @@ console_command = '/rails/bin/rails console'
   guest_path = '/rails/public'
   url_prefix = '/'
 
-[mounts]
-  source = "myapp_data"
-  destination = "/data"
