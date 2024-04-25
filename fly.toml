@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for investb on 2024-03-27T15:49:05+01:00
+# fly.toml app configuration file generated for investb on 2024-04-25T14:55:18+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'investb'
-primary_region = 'ams'
+primary_region = 'arn'
 console_command = '/rails/bin/rails console'
 
 [build]
@@ -26,4 +26,8 @@ console_command = '/rails/bin/rails console'
 [[statics]]
   guest_path = '/rails/public'
   url_prefix = '/'
+
+[[mounts]]
+  source="myapp_data"
+  destination="/data"
 
