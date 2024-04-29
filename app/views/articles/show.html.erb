@@ -5,9 +5,9 @@
         <div>
           <p class="my-2">
                     <% if @article.article_image.attached? %>
-              <%= image_tag @article.article_image, alt: 'Artykuł', class: "rounded w-full" %>
+              <%= image_tag @article.resized_article_image, alt: 'Artykuł', class: "rounded w-full" %>
             <% else %>
-              <%= image_tag 'bull.png', alt: 'Artykuł', class: "rounded w-full" %>
+              <%= image_tag 'article_image.jpg', alt: 'Artykuł', class: "rounded w-full" %>
             <% end %>
           </p>
           
