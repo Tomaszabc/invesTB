@@ -17,7 +17,7 @@
         </p>
 
         <p>
-          <%= truncate(article.content.to_plain_text, length: 100) %> 
+          <%= render_article_content(article) %> 
         </p>
       </div>
 
