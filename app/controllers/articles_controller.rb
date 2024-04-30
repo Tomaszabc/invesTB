@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:destroy, :edit, :update, :new]
   before_action :set_article, only: %i[show edit update destroy]
+  
 
   # GET /articles or /articles.json
   def index
