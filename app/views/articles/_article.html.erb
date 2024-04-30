@@ -12,9 +12,10 @@
           <% end %>
         </div>
 
-        <p class="my-3 text-lg text-slate-300">
-          <strong><%= article.title %></strong>
-        </p>
+        <div class="my-3 text-lg text-slate-300 flex">
+            <%= render 'thumbnail_number', article: article, articles: @articles %> 
+            <strong class="ml-2"><%= article.title %></strong>
+        </div>
 
         <p>
           <%= render_article_content(article) %> 

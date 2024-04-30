@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  before_create :set_sequential_number
   before_save :generate_slug
 
   has_rich_text :content
@@ -16,5 +17,11 @@ class Article < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  private
+
+  def ser_sequential_number
+    self.sequential_number = Article.maximum(:sequential_number).to_i + 1
   end
 end

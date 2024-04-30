@@ -1,22 +1,19 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:destroy, :edit, :update, :new]
   before_action :set_article, only: %i[show edit update destroy]
-  
 
   # GET /articles or /articles.json
   def index
     @articles = if params[:slug]
-       Article.where(slug: params[:slug]).order(id: :desc)
+      Article.where(slug: params[:slug]).order(id: :desc)
     else
-       Article.order(id: :desc)
+      Article.order(id: :desc)
     end
- end
+  end
 
   # GET /articles/1 or /articles/1.json
   def show
-  
- end
- 
+  end
 
   # GET /articles/new
   def new
