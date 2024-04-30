@@ -5,12 +5,18 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.order(id: :desc)
-  end
+    @articles = if params[:slug]
+       Article.where(slug: params[:slug]).order(id: :desc)
+    else
+       Article.order(id: :desc)
+    end
+ end
 
   # GET /articles/1 or /articles/1.json
   def show
-  end
+  
+ end
+ 
 
   # GET /articles/new
   def new
@@ -63,7 +69,13 @@ class ArticlesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_article
-    @article = Article.find(params[:id])
+    if params[:slug]
+      @article = Article.find_by(slug: params[:slug])
+    elsif params[:id]
+      @article = Article.find(params[:id])
+    else
+      raise ActiveRecord::RecordNotFound, "Article not found"
+    end
   end
 
   # Only allow a list of trusted parameters through.
