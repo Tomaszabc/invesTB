@@ -21,7 +21,7 @@ class Article < ApplicationRecord
 
   private
 
-  def ser_sequential_number
+  def set_sequential_number
     self.sequential_number = Article.maximum(:sequential_number).to_i + 1
   end
 end
