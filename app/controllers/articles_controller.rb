@@ -13,6 +13,16 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find_by!(slug: params[:slug])
+
+    session_key = "viewed_article_#{@article.id}"
+
+    unless session[session_key]
+      @article.increment!(:views_count)
+      session[session_key] = true
+    end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to articles_path, alert: "Article not found."
   end
 
   # GET /articles/new

@@ -1,6 +1,8 @@
   <div class="max-2w-xl mx-auto overflow-hidden">
       <div class="flex flex-col justify-between"> 
         <div>
+
+          
           <p class="my-2">
                     <% if @article.article_image.attached? %>
               <%= image_tag @article.resized_article_image, alt: 'Artykuł', class: "rounded w-full" %>
@@ -13,13 +15,20 @@
           <p class="text-sm text-slate-400 text-right  mr-4">
             <strong><%= @article.created_at.strftime('%d-%m-%Y') %></strong>
           </p>
+          
+          <div class="text-sm text-slate-400 text-right mr-4">
+             Wyświetlenia: <%= @article.views_count %>
+          </div>
 
         
 
           <div class=" article-content my-6 ">
             <%= @article.content %> 
           </div>
+
+          
         </div>
+
 
       </div>
     </div>
