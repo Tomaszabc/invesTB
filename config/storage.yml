@@ -5,11 +5,16 @@ test:
 local:
   service: Disk
   public: true
-  root: <%= ENV.fetch('RAILS_STORAGE', Rails.root.join("storage")) %>
+  root: <%= Rails.root.join("storage") %>
 
-production:
-  service: Disk
-  root: /data
+
+amazon:
+  service: S3
+  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  bucket: investb
+  region: "eu-north-1" # e.g. 'us-east-1'
+  public: true
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:

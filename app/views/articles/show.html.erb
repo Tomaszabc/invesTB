@@ -11,14 +11,14 @@
           
 
           <p class="text-sm text-slate-400 text-right  mr-4">
-          <strong><%= @article.created_at.strftime('%d-%m-%Y') %></strong>
-        </p>
+            <strong><%= @article.created_at.strftime('%d-%m-%Y') %></strong>
+          </p>
 
         
 
-          <p class="my-6 ">
+          <div class=" article-content my-6 ">
             <%= @article.content %> 
-          </p>
+          </div>
         </div>
 
       </div>

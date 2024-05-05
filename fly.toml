@@ -23,6 +23,7 @@ console_command = '/rails/bin/rails console'
 [[vm]]
   size = 'shared-cpu-1x'
 
+
 [[statics]]
   guest_path = '/rails/public'
   url_prefix = '/'
