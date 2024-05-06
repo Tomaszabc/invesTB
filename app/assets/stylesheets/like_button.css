@@ -1,5 +1,6 @@
 .article-like-button {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -19,7 +20,7 @@
 }
 
 .svg-container {
-  width: 50px; /* Możesz dostosować rozmiar */
+  width: 60px; /* Możesz dostosować rozmiar */
   height: auto;
   margin-right: 10px; /* Odległość między ikoną a tekstem */
 }

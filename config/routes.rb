@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }, skip: [:registrations]
   resources :articles, param: :slug do
     member do
-      post 'like'
+      post "like"
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -21,8 +21,8 @@ class ArticlesController < ApplicationController
       @article.increment!(:views_count)
       session[session_key] = true
     end
-    rescue ActiveRecord::RecordNotFound
-      redirect_to articles_path, alert: "Article not found."
+  rescue ActiveRecord::RecordNotFound
+    redirect_to articles_path, alert: "Article not found."
   end
 
   # GET /articles/new
@@ -75,13 +75,13 @@ class ArticlesController < ApplicationController
   def like
     @article = Article.find_by!(slug: params[:slug])
     session_key = "liked_article_#{@article.id}"
-  
+
     unless session[session_key]
       @article.likes.create
       session[session_key] = true
     end
-  
-    redirect_to @article, notice: 'Thank you for liking!'
+
+    redirect_to @article, notice: "Thank you for liking!"
   end
 
   private

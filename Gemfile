@@ -84,4 +84,4 @@ gem "mini_magick"
 
 gem "aws-sdk-s3", require: false
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem "dotenv-rails", groups: [:development, :test]
