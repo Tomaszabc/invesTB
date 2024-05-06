@@ -1,5 +1,8 @@
 <div class="article-like-button">
           <% if session["liked_article_#{@article.id}"] %>
+            <p class="mr-2">
+              Dziękuję 
+            </p>
             <button disabled class="like-svg-button">
               <span class="svg-container">
 
@@ -7,6 +10,7 @@
 
               </span>
             </button>
+            
           <% else %>
             <%= button_to like_article_path(@article), method: :post, class: "like-svg-button hover:opacity-60 transition-opacity duration-200" do %>
               <span class="svg-container">
