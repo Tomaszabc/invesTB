@@ -81,7 +81,13 @@ class ArticlesController < ApplicationController
       session[session_key] = true
     end
 
-    redirect_to @article, notice: "Thank you for liking!"
+    respond_to do |format|
+      format.html { redirect_to @article, notice: "Thank you for liking!" }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("like_button_#{@article.id}",
+          partial: "shared/like_button", locals: {article: @article})
+      end
+    end
   end
 
   private
