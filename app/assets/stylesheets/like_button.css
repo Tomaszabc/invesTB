@@ -1,0 +1,30 @@
+.article-like-button {
+  display: flex;
+  align-items: center;
+}
+
+.like-svg-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.like-svg-button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.svg-container {
+  width: 50px; /* Możesz dostosować rozmiar */
+  height: auto;
+  margin-right: 10px; /* Odległość między ikoną a tekstem */
+}
+
+.svg-container svg {
+  width: 100%;
+  height: auto;
+}

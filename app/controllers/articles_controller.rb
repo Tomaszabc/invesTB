@@ -72,6 +72,18 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def like
+    @article = Article.find_by!(slug: params[:slug])
+    session_key = "liked_article_#{@article.id}"
+  
+    unless session[session_key]
+      @article.likes.create
+      session[session_key] = true
+    end
+  
+    redirect_to @article, notice: 'Thank you for liking!'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
