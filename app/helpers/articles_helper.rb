@@ -1,5 +1,5 @@
 module ArticlesHelper
-  def render_article_content(article, length: 100)
+  def render_article_content(article, length: 150)
     return "Brak treści" unless article&.content&.body
 
     content_text = article.content.body.to_plain_text
