@@ -2,12 +2,14 @@
 <html>
   <head>
     <title>InvesTB</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://cdn.tiny.cloud/1/xr3x9r2ci84g2x4gghhrvhped41gpio4xyn4e07rf1gtprj3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
   </head>
   <body>
   <%= render 'shared/navbar' %>
