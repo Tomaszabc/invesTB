@@ -3,8 +3,6 @@ class Article < ApplicationRecord
   before_save :generate_slug
 
   has_many :likes
-
-  has_rich_text :content
   has_one_attached :article_image
 
   validates :title, presence: true
