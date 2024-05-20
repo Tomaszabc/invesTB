@@ -31,3 +31,14 @@
   </div>
 <% end %>
 
+<script src="//cdn.ckeditor.com/4.22.1/standard-all/ckeditor.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        CKEDITOR.replace("editor", {
+            extraPlugins: 'embed,autoembed,justify,font',
+            embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+            autoEmbed_widget: 'embedSemantic'
+            
+        });
+    });
+</script>
