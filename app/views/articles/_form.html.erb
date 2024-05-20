@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label :content %>
-    <%= form.text_area :content, id: "editor", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full " %>
+    <%= form.text_area :content, id: "editor", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: {controller: "ckeditor" } %>
   </div>
 
   <div class="field">
@@ -31,10 +31,3 @@
   </div>
 <% end %>
 
-<script src="//cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
-
-<script>
-   document.addEventListener("DOMContentLoaded", function() {
-      CKEDITOR.replace("editor");
-   });
-</script>
