@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
     <title>InvesTB</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Blog inwestycyjny" content="Analiza sytuacji na giełdzie, akcje, surowce, strach i chciwość, strategie, własne przemyślenia. Kupuj tanio, sprzedawaj drogo.">
-    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -15,12 +13,10 @@
     <script src="https://cdn.tiny.cloud/1/xr3x9r2ci84g2x4gghhrvhped41gpio4xyn4e07rf1gtprj3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
   </head>
   <body>
-  <%= render 'shared/navbar' %>
-  <%= render 'shared/top-bar/top-bar'%>
-
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/top-bar/top-bar'%>
     <main class="container mx-auto mt-8 px-3  max-w-4xl mb-16">
       <%= yield %>
-      
     </main>
   </body>
 </html>
