@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
+        format.html { redirect_to article_url(@article), notice: "Artykuł utworzony." }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
+        format.html { redirect_to article_url(@article), notice: "Artykuł został zaktualizowany" }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,7 +67,7 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+      format.html { redirect_to articles_url, notice: "Usunięto artykuł." }
       format.json { head :no_content }
     end
   end
@@ -82,7 +82,7 @@ class ArticlesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to @article, notice: "Thank you for liking!" }
+      format.html { redirect_to @article, notice: "Dziękuję za polubienie!" }
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace("like_button_#{@article.id}",
           partial: "shared/like_button", locals: {article: @article})
@@ -99,7 +99,7 @@ class ArticlesController < ApplicationController
     elsif params[:id]
       @article = Article.find(params[:id])
     else
-      raise ActiveRecord::RecordNotFound, "Article not found"
+      raise ActiveRecord::RecordNotFound, "Nie znaleziono"
     end
   end
 
