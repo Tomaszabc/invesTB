@@ -1,0 +1,10 @@
+<%= turbo_frame_tag dom_id(comment) do %>
+  <div id="<%= dom_id(comment) %>">
+    <p><strong><%= comment.user.email %>:</strong></p>
+    <p><%= comment.content %></p>
+
+    <% if comment.user == current_user %>
+      <%= button_to 'Delete', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+<% end %>

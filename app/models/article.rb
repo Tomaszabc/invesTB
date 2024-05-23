@@ -2,6 +2,7 @@ class Article < ApplicationRecord
   before_create :set_sequential_number
   before_save :generate_slug
 
+  has_many :comments, dependent: :destroy
   has_many :likes
   has_one_attached :article_image
 
