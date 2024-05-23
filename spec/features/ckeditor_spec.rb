@@ -19,7 +19,7 @@ RSpec.feature "CKEditor", type: :feature, js: true do
 
     click_button "Create Article"
 
-    expect(page).to have_content("Article was successfully created.")
+    expect(page).to have_content("Artykuł utworzony.")
     expect(page).to have_content("Test Article")
     expect(page).to have_content("This is the content of the test article.")
   end
