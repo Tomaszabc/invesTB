@@ -150,3 +150,13 @@ pl:
         many: "%{resource} nie został zapisany z powodu %{count} błędów:"
         one: "%{resource} nie został zapisany z powodu jednego błędu:"
         other: "%{resource} nie został zapisany z powodu %{count} błędów:"
+      blank: "Treść nie może być pusta"
+    models:
+        comment:
+          attributes:
+            content:
+              blank: "Treść nie może być pusta"
+    template:
+      header:
+        one: "1 błąd nie pozwala na zapisanie tego komentarza"
+        other: "%{count} błędy nie pozwalają na zapisanie tego komentarza"

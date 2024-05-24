@@ -26,12 +26,12 @@
     </div>
   </div>
 </div>
+
+<div class='mt-10'>
+  <%= render 'comments/form', article: @article, comment: Comment.new %>
 </div>
-<div class='mt-10 '>
-  <%= render 'comments/form', article: @article %>
-</div>
-<h3 class="m-4">Komentarze:</h3>
+
+<h3 class="m-y-4">Komentarze:</h3>
 <div id="comments">
   <%= render @article.comments %>
-</div>
 </div>

@@ -1,6 +1,6 @@
 <%= turbo_frame_tag dom_id(comment) do %>
-  <div id="<%= dom_id(comment) %>">
-    <p><strong><%= comment.user ? comment.user.display_name : comment.username %>:</strong></p>
+  <div id="<%= dom_id(comment) %>", class="m-4 border-b border-dashed">
+    <p>Autor: <strong><%= comment.user ? comment.user.display_name : comment.username %></strong></p>
     <p><%= comment.content.body.to_s %></p>
 
     <% if can_delete_comment?(comment) %>

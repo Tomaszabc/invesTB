@@ -1,28 +1,30 @@
-<%= form_with(model: [article, Comment.new], local: true) do |form| %>
-  <% if form.object.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(form.object.errors.count, "error") %> Nie zapisano ponieważ:</h2>
-      <ul>
-        <% form.object.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <% unless user_signed_in? %>
-    <div class="field">
-      <%= form.label :username, "Nazwa użytkownika:" %>
-      <%= form.text_field :username, class:' rounded bg-transparent', autocomplete: "off" %>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label "Napisz komentarz:" %>
-    <%= form.rich_text_area :content %>
-  </div>
-  <div class="actions justify-end flex mr-10">
-    <%= button_tag(type: 'submit', class: 'svg-button-comment') do %>
+<%= turbo_frame_tag "new_comment_form" do %>
+  <%= form_with(model: [article, comment], local: true, id: 'new_comment_form') do |form| %>
+    <% if form.object.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% form.object.errors.full_messages.each do |message| %>
+            <% message = message.sub("Content ", "").sub("Username ", "") %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </div>
+
+    <% unless user_signed_in? %>
+      <div class="field">
+        <%= form.label :username, "Nazwa użytkownika:" %>
+        <%= form.text_field :username, value: form.object.username, class: 'rounded bg-transparent', autocomplete: "off", id: 'comment_username' %>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label "Napisz komentarz:" %>
+      <%= form.rich_text_area :content, id: 'comment_content' %>
+    </div>
+    <div class="actions justify-end flex mr-10 mt-2">
+      <%= button_tag(type: 'submit', class: 'svg-button-comment') do %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

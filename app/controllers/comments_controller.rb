@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_article
 
+  
   def create
     @comment = @article.comments.build(comment_params)
     if user_signed_in?
@@ -12,11 +13,14 @@ class CommentsController < ApplicationController
       session[:comment_ids] ||= []
       session[:comment_ids] << @comment.id
       respond_to do |format|
-        format.html { redirect_to @article, notice: "Komentarz dodany." }
         format.turbo_stream
+        format.html { redirect_to @article, notice: "Komentarz dodany." }
       end
     else
-      redirect_to @article, alert: "Komentarz nie może być utworzony"
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_comment_form", partial: "comments/form", locals: { article: @article, comment: @comment }) }
+        format.html { redirect_to @article, alert: "Komentarz nie może być utworzony" }
+      end
     end
   end
 

@@ -1,3 +1,8 @@
-<%= turbo_stream.append "comments" do %>
+<%= turbo_stream.prepend "comments" do %>
   <%= render @comment %>
 <% end %>
+
+<%= turbo_stream.update "new_comment_form" do %>
+  <%= render partial: "comments/form", locals: { article: @article, comment: Comment.new(username: @comment.username) } %>
+<% end %>
+
