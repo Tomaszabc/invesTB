@@ -9,10 +9,14 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :username, "Nazwa użytkownika:" %>
-    <%= form.text_field :username, class:' rounded bg-transparent', autocomplete: "off" %>
-  </div>
+
+  <% unless user_signed_in? %>
+    <div class="field">
+      <%= form.label :username, "Nazwa użytkownika:" %>
+      <%= form.text_field :username, class:' rounded bg-transparent', autocomplete: "off" %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= form.label "Napisz komentarz:" %>
     <%= form.rich_text_area :content %>
