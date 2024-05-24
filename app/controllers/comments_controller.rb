@@ -3,7 +3,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.build(comment_params)
-    @comment.user = current_user
+    if user_signed_in?
+      @comment.user = current_user
+    else 
+      @comment.username = params[:comment][:username]
+    end
     if @comment.save
       respond_to do |format|
         format.html { redirect_to @article, notice: "Komentarz dodany." }
@@ -32,6 +36,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :username)
   end
 end

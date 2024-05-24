@@ -10,7 +10,11 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.label "Dodaj komentarz:" %>
+    <%= form.label :username, "Nazwa użytkownika:" %>
+    <%= form.text_field :username, class:' rounded bg-transparent', autocomplete: "off" %>
+  </div>
+  <div class="field">
+    <%= form.label "Napisz komentarz:" %>
     <%= form.rich_text_area :content %>
   </div>
   <div class="actions justify-end flex mr-10">
