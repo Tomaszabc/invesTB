@@ -349,6 +349,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  actiontext
   activestorage
   aws-sdk-s3
   bootsnap
