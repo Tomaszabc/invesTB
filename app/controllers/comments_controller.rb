@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_article
 
-  
   def create
     @comment = @article.comments.build(comment_params)
     if user_signed_in?
       @comment.user = current_user
-    else 
+    else
       @comment.username = params[:comment][:username]
     end
     if @comment.save
@@ -18,7 +17,7 @@ class CommentsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_comment_form", partial: "comments/form", locals: { article: @article, comment: @comment }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_comment_form", partial: "comments/form", locals: {article: @article, comment: @comment}) }
         format.html { redirect_to @article, alert: "Komentarz nie może być utworzony" }
       end
     end
@@ -26,7 +25,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @article.comments.find(params[:id])
-    
+
     if can_delete_comment?(@comment)
       @comment.destroy
       respond_to do |format|
@@ -49,5 +48,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :username)
   end
-
 end

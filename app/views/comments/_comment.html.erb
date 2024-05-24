@@ -2,7 +2,6 @@
   <div id="<%= dom_id(comment) %>", class="m-4 border-b border-dashed">
     <p>Autor: <strong><%= comment.user ? comment.user.display_name : comment.username %></strong></p>
     <p><%= comment.content.body.to_s %></p>
-
     <% if can_delete_comment?(comment) %>
       <%= button_to 'Delete', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
     <% end %>

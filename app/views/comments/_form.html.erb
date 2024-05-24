@@ -10,16 +10,14 @@
         </ul>
       </div>
     <% end %>
-
     <% unless user_signed_in? %>
+      <%= form.label :username, "Autor:" %>
       <div class="field">
-        <%= form.label :username, "Nazwa użytkownika:" %>
         <%= form.text_field :username, value: form.object.username, class: 'rounded bg-transparent', autocomplete: "off", id: 'comment_username' %>
       </div>
     <% end %>
-
     <div class="field">
-      <%= form.label "Napisz komentarz:" %>
+      <%= form.label "Treść komentarza:" %>
       <%= form.rich_text_area :content, id: 'comment_content' %>
     </div>
     <div class="actions justify-end flex mr-10 mt-2">

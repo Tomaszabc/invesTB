@@ -15,5 +15,5 @@
 #   inflect.acronym "RESTful"
 # end
 ActiveSupport::Inflector.inflections(:pl) do |inflect|
-  inflect.irregular 'błąd', 'błędy'
+  inflect.irregular "błąd", "błędy"
 end
