@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
       @comment.username = params[:comment][:username]
     end
     if @comment.save
+      session[:comment_ids] ||= []
+      session[:comment_ids] << @comment.id
       respond_to do |format|
         format.html { redirect_to @article, notice: "Komentarz dodany." }
         format.turbo_stream
@@ -20,10 +22,15 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @article.comments.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to @article, notice: "Komentarz usunięty" }
-      format.turbo_stream
+    
+    if can_delete_comment?(@comment)
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to @article, notice: "Komentarz usunięty" }
+        format.turbo_stream
+      end
+    else
+      redirect_to @article, alert: "Nie masz uprawnień do usunięcia tego komentarza"
     end
   end
 
@@ -38,4 +45,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :username)
   end
+
 end

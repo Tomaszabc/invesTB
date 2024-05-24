@@ -1,9 +1,9 @@
 <%= turbo_frame_tag dom_id(comment) do %>
   <div id="<%= dom_id(comment) %>">
     <p><strong><%= comment.user ? comment.user.display_name : comment.username %>:</strong></p>
-    <p><%= comment.content %></p>
+    <p><%= comment.content.body.to_s %></p>
 
-    <% if comment.user == current_user %>
+    <% if can_delete_comment?(comment) %>
       <%= button_to 'Delete', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
     <% end %>
   </div>
