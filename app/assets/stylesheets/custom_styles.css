@@ -42,3 +42,7 @@ body {
 .hover-scale:hover .image-scale {
   transform: scale(1.03); /* Skaluje obrazek o 20% */
 }
+
+trix-toolbar .trix-button--icon {
+  -webkit-filter: invert(80%);
+}
