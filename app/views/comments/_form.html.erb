@@ -9,13 +9,12 @@
       </ul>
     </div>
   <% end %>
-
-   <div class="field">
-    <%= form.label :content %>
+  <div class="field">
+    <%= form.label "Dodaj komentarz:" %>
     <%= form.rich_text_area :content %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions justify-end flex mr-10">
+    <%= button_tag(type: 'submit', class: 'svg-button-comment') do %>
+    <% end %>
   </div>
 <% end %>

@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
   before_action :set_article
-  
+
   def create
     @comment = @article.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to @article, notice: "Komentarz dodany."}
+        format.html { redirect_to @article, notice: "Komentarz dodany." }
         format.turbo_stream
       end
     else

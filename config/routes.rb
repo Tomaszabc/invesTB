@@ -9,6 +9,6 @@ Rails.application.routes.draw do
       post "like"
     end
   end
- 
+
   root "articles#index"
 end
