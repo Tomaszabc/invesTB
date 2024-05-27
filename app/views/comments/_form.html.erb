@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "new_comment_form" do %>
-  <%= form_with(model: [article, comment], local: true, id: 'new_comment_form') do |form| %>
+  <%= form_with(model: [article, comment], local: true, id: 'new_comment_form_#{article.slug}') do |form| %>
     <% if form.object.errors.any? %>
       <div id="error_explanation", class="justify-center flex">
         <ul>
@@ -17,7 +17,7 @@
       </div>
     <% end %>
     <div class="field">
-      <%= form.label "Treść komentarza:" %>
+      <%= form.label "comment_content", "Treść komentarza:" %>
       <%= form.rich_text_area :content, id: 'comment_content' %>
     </div>
     <div class="actions justify-end flex mr-10 mt-2">
