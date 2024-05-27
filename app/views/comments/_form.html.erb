@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "new_comment_form" do %>
   <%= form_with(model: [article, comment], local: true, id: 'new_comment_form') do |form| %>
     <% if form.object.errors.any? %>
-      <div id="error_explanation">
+      <div id="error_explanation", class="justify-center flex">
         <ul>
           <% form.object.errors.full_messages.each do |message| %>
             <% message = message.sub("Content ", "").sub("Username ", "") %>
@@ -26,3 +26,5 @@
     </div>
   <% end %>
 <% end %>
+
+
