@@ -1,162 +1,241 @@
+---
 pl:
   activerecord:
-    attributes:
-      user:
-        confirmation_sent_at: Data wysłania potwierdzenia
-        confirmation_token: Token potwierdzający
-        confirmed_at: Data potwierdzenia
-        created_at: Data utworzenia
-        current_password: Aktualne hasło
-        current_sign_in_at: Data bieżącego logowania
-        current_sign_in_ip: Bieżący adres IP
-        email: Adres e-mail
-        encrypted_password: Zaszyfrowane hasło
-        failed_attempts: Nieudanych prób
-        last_sign_in_at: Data ostatniego logowania
-        last_sign_in_ip: Ostatni adres IP
-        locked_at: Data zablokowania
-        password: Hasło
-        password_confirmation: Potwierdzenie hasła
-        remember_created_at: Data utworzenia zapamiętania logowania
-        remember_me: Zapamiętaj mnie
-        reset_password_sent_at: Data wysłania żądania resetu hasła
-        reset_password_token: Token umożliwiający reset hasła
-        sign_in_count: Liczba logowań
-        unconfirmed_email: Niepotwierdzony adres e-mail
-        unlock_token: Token odblokowywujący
-        updated_at: Data uaktualnienia
-    models:
-      user:
-        few: Użytkowników
-        one: Użytkownik
-        other: Użytkowników
-  devise:
-    confirmations:
-      confirmed: Twój adres e-mail został potwierdzony.
-      new:
-        resend_confirmation_instructions: Wyślij ponownie instrukcje aktywacji
-      send_instructions: Instrukcja jak aktywować konto zostanie niezwłocznie wysłana na podany adres e-mail.
-      send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, w ciągu najbliższych minut otrzymasz instrukcje jak aktywować konto.
-    failure:
-      already_authenticated: Jesteś już zalogowany.
-      inactive: Twoje konto nie zostało jeszcze aktywowane.
-      invalid: Błędny adres %{authentication_keys} lub hasło.
-      last_attempt: Masz jeszcze jedną próbę, nim Twoje konto zostanie zablokowane.
-      locked: Twoje konto jest zablokowane.
-      not_found_in_database: Błędny adres %{authentication_keys} lub hasło.
-      timeout: Sesja wygasła, aby kontynuować zaloguj się ponownie.
-      unauthenticated: Aby kontynuować zaloguj lub zarejestruj się.
-      unconfirmed: Aby kontynuować aktywuj konto.
-    mailer:
-      confirmation_instructions:
-        action: Potwierdź swoje konto
-        greeting: Witaj %{recipient}!
-        instruction: 'Możesz potwierdzić swoje konto przy pomocy poniższego linku:'
-        subject: Instrukcja aktywacji konta
-      email_changed:
-        greeting: Witaj %{recipient}!
-        message: Kontaktujemy się z Tobą, aby Cię poinformować o zmianie Twojego adresu e-mail na %{email}.
-        message_unconfirmed: Kontaktujemy się, by poinformować, że Twój adres e-mail został zmieniony na %{email}.
-        subject: E-mail zmieniony
-      password_change:
-        greeting: Witaj %{recipient}!
-        message: Kontaktujemy się z Tobą w celu poinformowania, że Twoje hasło zostało zmienione.
-        subject: Hasło zostało zmienione
-      reset_password_instructions:
-        action: Zmień swoje hasło
-        greeting: Cześć %{recipient}!
-        instruction: Ktoś zażądał zmiany hasła do Twojego konta. Hasło możesz zmienić wchodząc na poniższy link.
-        instruction_2: Jeśli to nie Ty zażądałeś zmiany hasła, proszę zignoruj tę wiadomość.
-        instruction_3: Twoje hasło nie ulegnie zmianie dopóki nie wejdziesz na poniższy link i nie ustawisz nowego.
-        subject: Instrukcja ustawienia nowego hasła
-      unlock_instructions:
-        action: Odblokuj swoje konto
-        greeting: Cześć %{recipient}!
-        instruction: 'Kliknij poniższy link, aby odblokować swoje konto:'
-        message: Twoje konto zostało zablokowane z powodu zbyt dużej liczby nieprawidłowych prób zalogowania się na nie.
-        subject: Instrukcja odblokowania konta
-    omniauth_callbacks:
-      failure: Logowanie przez konto %{kind} zakończyło się błędem z powodu "%{reason}".
-      success: Logowanie przez konto %{kind} zakończyło się pomyślnie.
-    passwords:
-      edit:
-        change_my_password: Zmień moje hasło
-        change_your_password: Zmień swoje hasło
-        confirm_new_password: Powtórz nowe hasło
-        new_password: Nowe hasło
-      new:
-        forgot_your_password: Zapomniałeś swojego hasła?
-        send_me_reset_password_instructions: Wyślij instrukcje zmiany hasła
-      no_token: Do tej strony możesz dostać się tylko poprzez wiadomość e-mail resetującą hasło. Jeśli to z niej tu trafiłeś, upewnij się, że użyłeś pełnego adresu.
-      send_instructions: Instrukcja zmiany hasła zostanie niezwłocznie wysłana na podany adres e-mail.
-      send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, otrzymasz zaraz wiadomość z instrukcjami odzyskiwania hasła.
-      updated: Hasło zmienione poprawnie. Zostałeś automatycznie zalogowany.
-      updated_not_active: Twoje hasło zmienione poprawnie.
-    registrations:
-      destroyed: Twoje konto zostało usunięte.
-      edit:
-        are_you_sure: Jesteś pewny?
-        cancel_my_account: Anuluj moje konto
-        currently_waiting_confirmation_for_email: 'Aktualnie oczekujemy na potwierdzenie z: %{email}'
-        leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
-        title: Edytuj %{resource}
-        unhappy: Niezadowolony
-        update: Aktualizuj
-        we_need_your_current_password_to_confirm_your_changes: potrzebujemy Twojego bieżącego hasła, aby potwierdzić zmiany
-      new:
-        sign_up: Zarejestruj się
-      signed_up: Witaj! Rejestracja zakończyła się pomyślnie.
-      signed_up_but_inactive: Konto zostało utworzone pomyślnie. Zanim się jednak zalogujesz, musi ono zostać jeszcze aktywowane.
-      signed_up_but_locked: Konto zostało utworzone pomyślnie. Nie możesz się jednak zalogować, ponieważ jest ono zablokowane.
-      signed_up_but_unconfirmed: Wiadomość z linkiem aktywacyjnym została wysłana na podany adres e-mail. Otwórz link w celu aktywacji konta.
-      update_needs_confirmation: Konto zostało zaktualizowane, musimy jednak potwierdzić nowy adres e-mail. Sprawdź swoją skrzynkę pocztową i otwórz link aktywacyjny, aby ukończyć zmianę adresu.
-      updated: Konto zostało pomyślnie zaktualizowane.
-      updated_but_not_signed_in: Twoje konto zostało pomyślnie zaktualizowane, ale ponieważ hasło zostało zmienione, musisz się ponownie zalogować
-    sessions:
-      already_signed_out: Wylogowano pomyślnie.
-      new:
-        sign_in: Zaloguj się
-      signed_in: Zalogowano pomyślnie.
-      signed_out: Wylogowano pomyślnie.
-    shared:
-      links:
-        back: Powrót
-        didn_t_receive_confirmation_instructions: Nie otrzymałeś instrukcji aktywacji konta?
-        didn_t_receive_unlock_instructions: Nie otrzymałeś instrukcji odblokowania konta?
-        forgot_your_password: Zapomniałeś hasła?
-        sign_in: Zaloguj się
-        sign_in_with_provider: Zaloguj się przez %{provider}
-        sign_up: Zarejestruj się
-      minimum_password_length:
-        few: "(minimum %{count} znaki)"
-        many: "(minimum %{count} znaków)"
-        one: "(minimum %{count} znak)"
-        other: "(minimum %{count} znaku)"
-    unlocks:
-      new:
-        resend_unlock_instructions: Wyślij instrukcje odblokowania konta
-      send_instructions: Wkrótce powinieneś otrzymać e-mail z instrukcjami jak odblokować swoje konto.
-      send_paranoid_instructions: Jeśli Twoje konto istnieje w naszej bazie, otrzymasz zaraz e-mail z instrukcjami jak odblokować swoje konto.
-      unlocked: Twoje konto zostało odblokowane. Zaloguj się, aby kontynuować.
+    errors:
+      messages:
+        record_invalid: 'Znaleziono błędy: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Nie można usunąć, gdyż istnieje zależny od niego %{record}
+          has_many: Nie można usunąć, gdyż istnieją zależne od niego %{record}
+  date:
+    abbr_day_names:
+    - nie
+    - pon
+    - wto
+    - śro
+    - czw
+    - pią
+    - sob
+    abbr_month_names:
+    - 
+    - sty
+    - lut
+    - mar
+    - kwi
+    - maj
+    - cze
+    - lip
+    - sie
+    - wrz
+    - paź
+    - lis
+    - gru
+    day_names:
+    - niedziela
+    - poniedziałek
+    - wtorek
+    - środa
+    - czwartek
+    - piątek
+    - sobota
+    formats:
+      default: "%d-%m-%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    - 
+    - stycznia
+    - lutego
+    - marca
+    - kwietnia
+    - maja
+    - czerwca
+    - lipca
+    - sierpnia
+    - września
+    - października
+    - listopada
+    - grudnia
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: około godziny
+        few: około %{count} godziny
+        many: około %{count} godzin
+        other: około %{count} godzin
+      about_x_months:
+        one: około miesiąca
+        few: około %{count} miesiące
+        many: około %{count} miesięcy
+        other: około %{count} miesięcy
+      about_x_years:
+        one: około rok
+        few: około %{count} lata
+        many: około %{count} lat
+        other: około %{count} lat
+      almost_x_years:
+        one: prawie rok
+        few: prawie %{count} lata
+        many: prawie %{count} lat
+        other: prawie %{count} lat
+      half_a_minute: pół minuty
+      less_than_x_seconds:
+        one: mniej niż sekundę
+        few: mniej niż %{count} sekundy
+        many: mniej niż %{count} sekund
+        other: mniej niż %{count} sekund
+      less_than_x_minutes:
+        one: mniej niż minutę
+        few: mniej niż %{count} minuty
+        many: mniej niż %{count} minut
+        other: mniej niż %{count} minut
+      over_x_years:
+        one: ponad rok
+        few: ponad %{count} lata
+        many: ponad %{count} lat
+        other: ponad %{count} lat
+      x_seconds:
+        one: "%{count} sekunda"
+        few: "%{count} sekundy"
+        many: "%{count} sekund"
+        other: "%{count} sekund"
+      x_minutes:
+        one: "%{count} minuta"
+        few: "%{count} minuty"
+        many: "%{count} minut"
+        other: "%{count} minut"
+      x_days:
+        one: "%{count} dzień"
+        few: "%{count} dni"
+        many: "%{count} dni"
+        other: "%{count} dni"
+      x_months:
+        one: "%{count} miesiąc"
+        few: "%{count} miesiące"
+        many: "%{count} miesięcy"
+        other: "%{count} miesięcy"
+    prompts:
+      second: Sekundy
+      minute: Minuta
+      hour: Godzina
+      day: Dzień
+      month: Miesiąc
+      year: Rok
   errors:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed: już został aktywowany, możesz się zalogować
-      confirmation_period_expired: musi być potwierdzone w ciągu %{period}, zamów nową wiadomość aktywacyjną
-      expired: stracił ważność, wyślij zapytanie o nowy
-      not_found: nie znaleziono
-      not_locked: nie był zablokowany
-      not_saved:
-        few: "%{resource} nie został zapisany z powodu %{count} błędów:"
-        many: "%{resource} nie został zapisany z powodu %{count} błędów:"
-        one: "%{resource} nie został zapisany z powodu jednego błędu:"
-        other: "%{resource} nie został zapisany z powodu %{count} błędów:"
-      blank: "Treść nie może być pusta"
-    models:
-        comment:
-          attributes:
-            content:
-              blank: "Treść nie może być pusta"
+      accepted: musi zostać zaakceptowane
+      blank: nie może być puste
+      confirmation: musi być taki sam jak w %{attribute}
+      empty: nie może być puste
+      equal_to: musi być równe %{count}
+      even: musi być parzyste
+      exclusion: jest zarezerwowane
+      greater_than: musi być większe od %{count}
+      greater_than_or_equal_to: musi być większe lub równe %{count}
+      inclusion: nie znajduje się na liście dopuszczalnych wartości
+      invalid: jest nieprawidłowe
+      less_than: musi być mniejsze od %{count}
+      less_than_or_equal_to: musi być mniejsze lub równe %{count}
+      not_a_number: nie jest liczbą
+      not_an_integer: musi być liczbą całkowitą
+      odd: musi być nieparzyste
+      other_than: musi być inne niż %{count}
+      present: musi być puste
+      required: musi istnieć
+      taken: zostało już zajęte
+      too_long:
+        one: jest za długie (maksymalnie jeden znak)
+        few: jest za długie (maksymalnie %{count} znaki)
+        many: jest za długie (maksymalnie %{count} znaków)
+        other: jest za długie (maksymalnie %{count} znaków)
+      too_short:
+        one: jest za krótkie (przynajmniej jeden znak)
+        few: jest za krótkie (przynajmniej %{count} znaki)
+        many: jest za krótkie (przynajmniej %{count} znaków)
+        other: jest za krótkie (przynajmniej %{count} znaków)
+      wrong_length:
+        one: ma nieprawidłową długość (powinna wynosić jeden znak)
+        few: ma nieprawidłową długość (powinna wynosić %{count} znaki)
+        many: ma nieprawidłową długość (powinna wynosić %{count} znaków)
+        other: ma nieprawidłową długość (powinna wynosić %{count} znaków)
     template:
+      body: 'Błędy dotyczą następujących pól:'
       header:
-        one: "1 błąd nie pozwala na zapisanie tego komentarza"
-        other: "%{count} błędy nie pozwalają na zapisanie tego komentarza"
+        one: "%{model} nie został zachowany z powodu jednego błędu"
+        few: "%{model} nie został zachowany z powodu %{count} błędów"
+        many: "%{model} nie został zachowany z powodu %{count} błędów"
+        other: "%{model} nie został zachowany z powodu %{count} błędów"
+  helpers:
+    select:
+      prompt: Proszę wybrać
+    submit:
+      create: Utwórz %{model}
+      submit: Wyślij %{model}
+      update: Aktualizuj %{model}
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: true
+        unit: zł
+    format:
+      delimiter: " "
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: Miliard
+          million: Milion
+          quadrillion: Biliard
+          thousand: Tysiąc
+          trillion: Bilion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: bajt
+            few: bajty
+            many: bajtów
+            other: bajty
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " oraz "
+      two_words_connector: " i "
+      words_connector: ", "
+  time:
+    am: przed południem
+    formats:
+      default: "%a, %-d %b %Y %H:%M:%S %z"
+      long: "%-d %B %Y %H:%M"
+      short: "%-d %b %H:%M"
+    pm: po południu

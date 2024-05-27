@@ -17,7 +17,7 @@ RSpec.feature "CKEditor", type: :feature, js: true do
 
     page.execute_script("CKEDITOR.instances['editor'].setData('<p>This is the content of the test article.</p>');")
 
-    click_button "Create Article"
+    click_button "Utwórz Article"
 
     expect(page).to have_content("Artykuł utworzony.")
     expect(page).to have_content("Test Article")
