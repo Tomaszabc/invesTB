@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   before_save :generate_slug
 
   has_many :comments, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_one_attached :article_image
 
   validates :title, presence: true
