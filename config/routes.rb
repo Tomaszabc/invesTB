@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }, skip: [:registrations]
 
   resources :articles, param: :slug do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :edit, :destroy]
     member do
       post "like"
     end

@@ -34,3 +34,13 @@
 trix-toolbar .trix-button--icon {
   -webkit-filter: invert(80%);
 }
+
+trix-editor {
+  resize: vertical;
+  overflow: auto;
+  min-height: 150px; /* Minimalna wysokość, którą można ustawić */
+  max-height: 500px; /* Maksymalna wysokość, którą można ustawić */
+  border: 1px solid #ccc; /* Opcjonalnie: styl ramki */
+  padding: 10px; /* Opcjonalnie: odstęp wewnętrzny */
+  box-sizing: border-box; /* Zapewnia, że padding jest wliczany do wysokości elementu */
+}

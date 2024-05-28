@@ -31,5 +31,5 @@
 </div>
 <h3 class="m-y-4">Komentarze:</h3>
 <div id="comments">
-  <%= render @article.comments %>
+  <%= render @article.comments.order(created_at: :desc) %>
 </div>

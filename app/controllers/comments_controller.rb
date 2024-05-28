@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_article
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
     @comment = @article.comments.build(comment_params)
@@ -37,12 +38,34 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    if @comment.update(comment_params)
+      respond_to do |format|
+        format.html { redirect_to @comment.article, notice: "Komentarz zmodyfikowany." }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(dom_id(@comment), partial: "comments/comment", locals: { comment: @comment }) }
+      end
+    else
+      render :edit
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.turbo_stream { render partial: 'comments/form', locals: { comment: @comment } }
+      format.html { render partial: 'form', locals: { comment: @comment } }
+    end
+  end
+
   private
 
   def set_article
     @article = Article.find_by!(slug: params[:article_slug])
   rescue ActiveRecord::RecordNotFound
     redirect_to articles_path, alert: "Wystąpił błąd."
+  end
+
+  def set_comment
+    @comment = @article.comments.find(params[:id])
   end
 
   def comment_params

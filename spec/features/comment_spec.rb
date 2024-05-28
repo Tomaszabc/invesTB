@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Add comment", type: :feature do
   scenario "User adds a comment to an article" do
@@ -7,7 +7,7 @@ RSpec.feature "Add comment", type: :feature do
     article = create(:article)
 
     # Logujemy się jako użytkownik
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
 
     # Przechodzimy do strony z artykułem
     visit article_path(article)
@@ -17,10 +17,8 @@ RSpec.feature "Add comment", type: :feature do
     # Wypełniamy formularz dodawania komentarza
     within("#new_comment_form") do
       fill_in "comment_content", with: "To jest nowy komentarz."
-      find('.svg-button-comment').click
+      find(".svg-button-comment").click
     end
-    
-    
 
     # Oczekujemy, że po złożeniu formularza pojawi się nowy komentarz na stronie
     expect(page).to have_content("To jest nowy komentarz.")
