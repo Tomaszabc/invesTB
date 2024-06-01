@@ -1,4 +1,4 @@
-<%= turbo_frame_tag  "new_comment_form" do %>
+<%= turbo_frame_tag dom_id(comment)  do %>
   <%= form_with(model: [article, comment], local: true, id: 'new_comment_form_#{article.slug}') do |form| %>
     <% if form.object.errors.any? %>
       <div id="error_explanation", class="justify-center flex">
@@ -10,14 +10,9 @@
         </ul>
       </div>
     <% end %>
-    <% unless user_signed_in? %>
-      <%= form.label :username, "Autor:" %>
-      <div class="field">
-        <%= form.text_field :username, value: form.object.username, class: 'rounded bg-transparent', autocomplete: "off", id: 'comment_username' %>
-      </div>
-    <% end %>
+    Użytkownik: <strong><%= comment.user ? comment.user.display_name : comment.username %></strong>
     <div class="field">
-      <%= form.label "comment_content", "Treść komentarza:" %>
+      <%= form.label "comment_content", "Edytuj komentarz:" %>
       <%= form.rich_text_area :content, id: 'comment_content' %>
     </div>
     <div class="actions justify-end flex mr-10 mt-2">

@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(comment) do %>
-  <div id="<%= dom_id(comment) %>" class="m-4 border-b pb-2">
+  <div class="m-4 border-b pb-2">
     <div class="flex justify-between items-center">
       <strong><%= comment.user ? comment.user.display_name : comment.username %></strong>
       <% if can_delete_comment?(comment) %>

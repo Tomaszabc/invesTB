@@ -8,12 +8,12 @@ class Comment < ApplicationRecord
   private
 
   def content_presence
-    if content.blank? && !contains_image?
+    if content.to_plain_text.blank? && !contains_image?
       errors.add(:content, "Treść komentarza nie może być pusta")
     end
   end
 
-  def cointains_image?
-    content.to_plain_text.blank? && content.embeds.present?
+  def contains_image?
+    content.embeds.present?
   end
 end

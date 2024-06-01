@@ -51,8 +51,8 @@ class CommentsController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.turbo_stream { render partial: 'comments/form', locals: { comment: @comment } }
-      format.html { render partial: 'form', locals: { comment: @comment } }
+      format.turbo_stream { render partial: 'comments/edit_form', locals: { comment: @comment, article: @article } }
+      format.html { render partial: 'comments/edit_form', locals: { comment: @comment, article: @article  } }
     end
   end
 
