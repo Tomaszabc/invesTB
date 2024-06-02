@@ -9,7 +9,9 @@ document.addEventListener("trix-initialize", function(event) {
     "[data-trix-attribute=number]",
     "[data-trix-attribute=heading]",
     "[data-trix-attribute=quote]",
-    "[data-trix-attribute=strike]"
+    "[data-trix-attribute=strike]",
+    "[data-trix-attribute=file-tools]",
+    "[data-trix-action=attachFiles]"
   ];
 
   buttonsToHide.forEach(function(selector) {
