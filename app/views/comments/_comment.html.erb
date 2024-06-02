@@ -17,8 +17,8 @@
             </label>
             <div class="sortboxmenu absolute mt-1 right-1 top-full min-w-max shadow rounded opacity-0 bg-gray-300 border border-gray-400 transition delay-75 ease-in-out z-10">
               <ul class="block text-right text-gray-900">
-                <li><a class="block px-3 py-2 hover:bg-gray-200 m-4"><%= button_to '', edit_article_comment_path(@article, comment), method: :get, class: "btn-edit icon-edit", data: { turbo_frame: dom_id(comment) } %></a></li>
-                <li><a class="block px-3 py-2 hover:bg-gray-200 m-4"><%= button_to '', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete icon-trash" %></a></li>
+                <li><a class="block px-3 py-2 hover:bg-gray-400  duration-300 m-4 rounded"><%= button_to '', edit_article_comment_path(@article, comment), method: :get, class: "btn-edit icon-edit", data: { turbo_frame: dom_id(comment) } %></a></li>
+                <li><a class="block px-3 py-2 hover:bg-gray-400 duration-300 m-4 rounded"><%= button_to '', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete icon-trash" %></a></li>
               </ul>
             </div>
           </div>
