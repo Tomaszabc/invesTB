@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require custom_styles
-
+ *= require dropdown_edit_comments
  */
 
  @font-face {
