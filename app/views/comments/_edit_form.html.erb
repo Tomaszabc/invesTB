@@ -15,9 +15,14 @@
       <%= form.label "comment_content", "Edytuj komentarz:" %>
       <%= form.rich_text_area :content, id: 'comment_content' %>
     </div>
-    <div class="actions justify-end flex mr-10 mt-2">
-      <%= button_tag(type: 'submit', class: 'svg-button-comment') do %>
+    <div class="actions justify-end flex mr-2 mt-2">
+      <div>
+        <%= button_tag(type: 'submit', class: 'btn-accept-comment mt-2 mr-8') do %>
+        </div>
+        <div class="mt-2 ml-5">
+          <%= link_to 'Anuluj', article_comment_path(@article, comment), class: 'btn-cancel', data: { turbo_frame: dom_id(comment) } %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% end %>

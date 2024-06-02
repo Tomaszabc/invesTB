@@ -1,10 +1,13 @@
 <%= turbo_frame_tag dom_id(comment) do %>
-  <div class="m-4 border-b pb-2">
+  <div class="m-2 border-b pb-2 mb-10 mt-8">
     <div class="flex justify-between items-center">
-      <strong><%= comment.user ? comment.user.display_name : comment.username %></strong>
+      <strong class="text-orange-600 text-xl">
+        <span class="user-comment-icon"></span>
+        <%= comment.user ? comment.user.display_name : comment.username %>
+      </strong>
       <% if can_delete_comment?(comment) %>
-      <div class="flex">
-        <%= button_to '', edit_article_comment_path(@article, comment), method: :get, class: "btn-edit icon-edit mr-6", data: { turbo_frame: dom_id(comment) } %>
+        <div class="flex">
+          <%= button_to '', edit_article_comment_path(@article, comment), method: :get, class: "btn-edit icon-edit mr-6", data: { turbo_frame: dom_id(comment) } %>
           <%= button_to '', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete icon-trash" %>
         <% end %>
       </div>

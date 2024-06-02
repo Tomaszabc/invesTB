@@ -2,6 +2,13 @@ class CommentsController < ApplicationController
   before_action :set_article
   before_action :set_comment, only: [:edit, :update, :destroy]
 
+  def show
+    respond_to do |format|
+      format.html { redirect_to @article }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(dom_id(@comment), partial: "comments/comment", locals: {comment: @comment}) }
+    end
+  end
+
   def create
     @comment = @article.comments.build(comment_params)
     if user_signed_in?
@@ -39,20 +46,21 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(comment_params)
-      respond_to do |format|
-        format.html { redirect_to @comment.article, notice: "Komentarz zmodyfikowany." }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(dom_id(@comment), partial: "comments/comment", locals: { comment: @comment }) }
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@comment, partial: "comments/comment", locals: {comment: @comment}) }
+        format.html { redirect_to @comment.article, notice: "Komentarz został zaktualizowany." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("comment_form", partial: "comments/form", locals: {comment: @comment}) }
       end
-    else
-      render :edit
     end
   end
 
   def edit
     respond_to do |format|
-      format.turbo_stream { render partial: 'comments/edit_form', locals: { comment: @comment, article: @article } }
-      format.html { render partial: 'comments/edit_form', locals: { comment: @comment, article: @article  } }
+      format.turbo_stream { render partial: "comments/edit_form", locals: {comment: @comment, article: @article} }
+      format.html { render partial: "comments/edit_form", locals: {comment: @comment, article: @article} }
     end
   end
 
