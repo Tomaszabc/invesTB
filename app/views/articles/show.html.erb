@@ -31,5 +31,9 @@
 </div>
 <h3 class="m-y-4">Komentarze:</h3>
 <div id="comments">
+   <% if @article.comments.any? %>
   <%= render @article.comments.order(created_at: :desc) %>
+  <% else %>
+    <p class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
+  <% end %>
 </div>
