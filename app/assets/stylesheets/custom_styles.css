@@ -142,3 +142,14 @@ body {
   height: 20px;
 }
 
+
+
+.comment-username {
+  word-wrap: break-word;
+  max-width: 100%; 
+  white-space: normal;  
+}
+
+.comment-content {
+  max-width: 100%; 
+}

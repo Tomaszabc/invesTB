@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(comment) do %>
   <div class="m-2 border-b pb-2 mb-10 mt-8">
     <div class="flex justify-between items-center">
-      <strong class="text-orange-600 text-xl">
+      <strong class="text-orange-600 text-xl comment-username">
         <span class="user-comment-icon"></span>
         <%= comment.user ? comment.user.display_name : comment.username %>
       </strong>
@@ -25,6 +25,6 @@
         </div>
       <% end %>
     </div>
-    <p><%= comment.content.body.to_s %></p>
+    <p class="comment-content"><%= comment.content.body.to_s %></p>
   </div>
 <% end %>
