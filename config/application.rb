@@ -21,5 +21,6 @@ module Investb
     config.assets.enabled = true
     config.assets.paths << Rails.root.join("/app/assets/fonts")
     config.i18n.default_locale = :pl
+    config.autoload_paths += %W["#{config.root}/app/validators"]
   end
 end

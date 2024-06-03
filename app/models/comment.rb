@@ -2,6 +2,8 @@ class Comment < ApplicationRecord
   belongs_to :article
   belongs_to :user, optional: true
   has_rich_text :content
+
+  validates :content, no_attachments: true
   validate :content_presence
   validates :username, presence: {message: "Nazwa użytkownika nie może być pusta"}, unless: -> { user.present? }
 
