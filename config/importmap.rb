@@ -8,4 +8,5 @@ pin_all_from "app/javascript/controllers", under: "controllers", preload: true
 pin "ckeditor", to: "ckeditor/ckeditor.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
-pin_all_from "app/javascript/trix", under: "trix"
+pin "trix_custom_config", to: "trix/trix_custom_config.js"
+pin "trix_custom_toolbar", to: "trix/trix_custom_toolbar.js"

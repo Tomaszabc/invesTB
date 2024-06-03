@@ -4,5 +4,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
+import "trix_custom_toolbar"
+import "trix_custom_config"
 
 
