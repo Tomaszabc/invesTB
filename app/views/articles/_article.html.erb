@@ -11,11 +11,11 @@
             <%= image_tag 'article_image.jpg', alt: 'Artykuł', class: "rounded w-full h-full object-cover image-scale" %>
           <% end %>
         </div>
-        <div class="my-3 text-lg text-slate-300 flex">
+        <div class="my-3 text-lg text-slate-300 flex ">
           <%= render 'thumbnail_number', article: article, articles: @articles %>
           <strong class="ml-2"><%= article.title %></strong>
         </div>
-        <p>
+        <p class="h-full">
           <%= render_article_content(article) %>
         </p>
       </div>
