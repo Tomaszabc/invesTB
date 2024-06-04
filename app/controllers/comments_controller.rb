@@ -39,10 +39,10 @@ class CommentsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @article, notice: "Komentarz usunięty" }
         format.turbo_stream do
-          flash.now[:notice] = 'Komentarz skasowany.'
+          flash.now[:notice] = "Komentarz skasowany."
           render turbo_stream: [
             turbo_stream.remove(@comment),
-            turbo_stream.append('flash-messages', partial: 'shared/flash_messages')
+            turbo_stream.append("flash-messages", partial: "shared/flash_messages")
           ]
         end
       end
@@ -55,21 +55,21 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         format.turbo_stream do
-          flash.now[:notice] = 'Komentarz zaktualizowany'
+          flash.now[:notice] = "Komentarz zaktualizowany"
           render turbo_stream: [
             turbo_stream.replace(@comment, partial: "comments/comment", locals: {comment: @comment}),
-            turbo_stream.append('flash-messages', partial: 'shared/flash_messages')
+            turbo_stream.append("flash-messages", partial: "shared/flash_messages")
           ]
         end
         format.html { redirect_to @comment.article, notice: "Komentarz zaktualizowany." }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.turbo_stream do
-          flash.now[:alert] = 'Nie udało się zaktualizować komentarza.'
+          flash.now[:alert] = "Nie udało się zaktualizować komentarza."
           render turbo_stream: [
             turbo_stream.replace("comment_form", partial: "comments/form", locals: {article: @article, comment: @comment})
-        ]
-      end
+          ]
+        end
       end
     end
   end
