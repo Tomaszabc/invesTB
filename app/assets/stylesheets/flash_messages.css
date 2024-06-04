@@ -17,8 +17,8 @@
 .flash__message {
   font-size: 24px; /* Adjust as needed */
   color: white;
-  padding: 12px 24px;
-  background-color: orange;
+  padding: 30px 24px;
+  background-color: #696969;
   animation: appear-then-fade 3s both;
   border-radius: 999px;
 }

@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(comment) do %>
   <div class="m-2 border-b pb-2 mb-10 mt-8">
     <div class="flex justify-between items-center">
-      <strong class="text-orange-600 text-xl comment-username">
+      <strong class="text-orange-600 text-xl comment-username <%= 'text-green-500' if comment.username == 'Tomek InvesTB' %>">
         <span class="user-comment-icon"></span>
         <%= comment.user ? comment.user.display_name : comment.username %>
       </strong>

@@ -6,3 +6,6 @@
   <%= render partial: "comments/form", locals: { article: @article, comment: Comment.new(username: @comment.username) } %>
 <% end %>
 
+<%= turbo_stream.prepend "flash", partial: "shared/flash_messages" %>
+
+<%= turbo_stream.update "no-comment-info" %>

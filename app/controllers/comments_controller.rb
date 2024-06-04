@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
       session[:comment_ids] ||= []
       session[:comment_ids] << @comment.id
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Komentarz dodany" }
         format.html { redirect_to @article, notice: "Komentarz dodany." }
       end
     else
@@ -54,11 +54,22 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@comment, partial: "comments/comment", locals: {comment: @comment}) }
-        format.html { redirect_to @comment.article, notice: "Komentarz został zaktualizowany." }
+        format.turbo_stream do
+          flash.now[:notice] = 'Komentarz zaktualizowany'
+          render turbo_stream: [
+            turbo_stream.replace(@comment, partial: "comments/comment", locals: {comment: @comment}),
+            turbo_stream.append('flash-messages', partial: 'shared/flash_messages')
+          ]
+        end
+        format.html { redirect_to @comment.article, notice: "Komentarz zaktualizowany." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("comment_form", partial: "comments/form", locals: {comment: @comment}) }
+        format.turbo_stream do
+          flash.now[:alert] = 'Nie udało się zaktualizować komentarza.'
+          render turbo_stream: [
+            turbo_stream.replace("comment_form", partial: "comments/form", locals: {article: @article, comment: @comment})
+        ]
+      end
       end
     end
   end
