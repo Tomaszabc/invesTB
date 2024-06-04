@@ -153,3 +153,7 @@ body {
 .comment-content {
   max-width: 100%; 
 }
+
+.text-lime-600 {
+  color: #84cc16; /* Użyj odpowiedniego kodu koloru */
+}
