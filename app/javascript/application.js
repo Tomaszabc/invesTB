@@ -7,4 +7,3 @@ import "@rails/actiontext"
 import "trix_custom_toolbar"
 import "trix_custom_config"
 
-

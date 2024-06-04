@@ -14,6 +14,7 @@
  *= require_self
  *= require custom_styles
  *= require dropdown_edit_comments
+ *= require flash_messages
  */
 
  @font-face {

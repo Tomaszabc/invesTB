@@ -38,7 +38,13 @@ class CommentsController < ApplicationController
       @comment.destroy
       respond_to do |format|
         format.html { redirect_to @article, notice: "Komentarz usunięty" }
-        format.turbo_stream
+        format.turbo_stream do
+          flash.now[:notice] = 'Komentarz skasowany.'
+          render turbo_stream: [
+            turbo_stream.remove(@comment),
+            turbo_stream.append('flash-messages', partial: 'shared/flash_messages')
+          ]
+        end
       end
     else
       redirect_to @article, alert: "Nie masz uprawnień do usunięcia tego komentarza"
