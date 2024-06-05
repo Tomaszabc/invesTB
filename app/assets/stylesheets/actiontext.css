@@ -31,16 +31,19 @@
 }
 
 
+
 trix-toolbar .trix-button--icon {
   -webkit-filter: invert(80%);
+  border: none !important;
 }
 
 trix-editor {
   resize: vertical;
   overflow: auto;
-  min-height: 150px; /* Minimalna wysokość, którą można ustawić */
-  max-height: 500px; /* Maksymalna wysokość, którą można ustawić */
-  border: 1px solid #ccc; /* Opcjonalnie: styl ramki */
-  padding: 10px; /* Opcjonalnie: odstęp wewnętrzny */
-  box-sizing: border-box; /* Zapewnia, że padding jest wliczany do wysokości elementu */
+  min-height: 150px; 
+  max-height: 500px; 
+  border: 1px solid #cccccc81; 
+  padding: 10px; 
+  box-sizing: border-box;
+  border-radius: 20px;
 }

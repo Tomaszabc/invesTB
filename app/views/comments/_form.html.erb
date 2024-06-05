@@ -1,7 +1,7 @@
 <%= turbo_frame_tag  "new_comment_form" do %>
   <%= form_with(model: [article, comment], local: true, id: 'new_comment_form_#{article.slug}') do |form| %>
     <% if form.object.errors.any? %>
-      <div id="error_explanation", class="justify-center flex bg-slate-400 rounded-lg text-black mb-3">
+      <div id="error_explanation", class="justify-center flex bg-slate-400 rounded-lg text-black">
         <ul>
           <% form.object.errors.full_messages.each do |message| %>
             <% message = message.sub("Content ", "").sub("Username ", "") %>
@@ -12,11 +12,11 @@
     <% end %>
     <% unless user_signed_in? %>
       <%= form.label :username, "Autor:" %>
-      <div class="field">
-        <%= form.text_field :username, value: form.object.username, class: 'rounded bg-transparent', autocomplete: "off", id: 'comment_username' %>
+      <div class="field m-2">
+        <%= form.text_field :username, value: form.object.username, class: 'bg-[#222224] p-2 rounded-2xl', autocomplete: "off", id: 'comment_username' %>
       </div>
     <% end %>
-    <div class="field">
+    <div class="field bg-[#222224] p-2 rounded-2xl">
       <%= form.label "comment_content", "Treść komentarza:" %>
       <%= form.rich_text_area :content, id: 'comment_content' %>
     </div>
