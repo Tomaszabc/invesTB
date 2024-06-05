@@ -9,18 +9,22 @@
   align-items: center;
   gap: 10px;
 
-  max-width: 100%;
-  width: max-content;
+  width: 100%;
+  max-width: 90%;
   padding: 0 16px;
 }
 
 .flash__message {
-  font-size: 24px; /* Adjust as needed */
+  font-size: 24px;
   color: white;
-  padding: 30px 24px;
   background-color: #696969;
   animation: appear-then-fade 3s both;
-  border-radius: 999px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+  padding: 30px 24px;
+  box-sizing: border-box; 
+  text-align: center;
 }
 
 @keyframes appear-then-fade {

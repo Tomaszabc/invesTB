@@ -2,7 +2,7 @@
   <div class=" border-b p-4 mb-10 mt-8 rounded-lg hover:bg-[#222224]">
     <div class="flex justify-between items-center">
       <% user_display_name = comment.user&.display_name || comment.username %>
-      <strong class="text-orange-600 text-xl comment-username <%= 'text-lime-600' if user_display_name == 'Tomek InvesTB' %>">
+      <strong class="text-orange-600 text-xl comment-username mb-4 <%= 'text-lime-600' if user_display_name == 'Tomek InvesTB' %>">
         <span class="user-comment-icon"></span>
         <%= comment.user ? comment.user.display_name : comment.username %>
       </strong>

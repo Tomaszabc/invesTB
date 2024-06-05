@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @article, notice: "Komentarz usunięty" }
         format.turbo_stream do
-          flash.now[:notice] = "Komentarz skasowany."
+          flash.now[:notice] = "Komentarz usunięty"
           render turbo_stream: [
             turbo_stream.remove(@comment),
             turbo_stream.append("flash-messages", partial: "shared/flash_messages")
