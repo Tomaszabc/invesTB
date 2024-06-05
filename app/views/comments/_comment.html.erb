@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(comment) do %>
-  <div class="m-2 border-b pb-2 mb-10 mt-8">
+  <div class=" border-b p-4 mb-10 mt-8 rounded-lg hover:bg-[#222224]">
     <div class="flex justify-between items-center">
       <% user_display_name = comment.user&.display_name || comment.username %>
       <strong class="text-orange-600 text-xl comment-username <%= 'text-lime-600' if user_display_name == 'Tomek InvesTB' %>">
