@@ -36,4 +36,20 @@ RSpec.feature "Add comment", type: :feature do
     expect(page).to have_content("To jest nowy komentarz.")
   end
 
+  scenario "User adds a comment exceeding the maximum length" do
+    article = create(:article)
+    long_comment = "a" * 10001
+
+    visit article_path(article)
+
+    expect(page).to have_selector("turbo-frame#new_comment_form")
+
+    within("turbo-frame#new_comment_form") do
+      fill_in "Autor:", with: "Example user"
+      fill_in_rich_text_area("comment[content]", with: long_comment)
+      find(".svg-button-comment").click
+    end
+
+    expect(page).to have_content("Treść komentarza nie może przekraczać 10000 znaków")
+  end
 end
