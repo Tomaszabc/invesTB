@@ -70,7 +70,7 @@ RSpec.configure do |config|
   config.include ActionText::SystemTestHelper, type: :feature
   config.formatter = :documentation
 
-  config.after(:each) do
-    sleep 2 # Pause for 2 seconds
-  end
+  # config.after(:each) do
+  #   sleep 2 
+  # end
 end
