@@ -1,17 +1,17 @@
 require "capybara/rspec"
 require "selenium/webdriver"
 
-Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+Capybara.register_driver :firefox do |app|
+  Capybara::Selenium::Driver.new(app, browser: :firefox)
 end
 
-Capybara.register_driver :headless_chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
+Capybara.register_driver :headless_firefox do |app|
+  options = Selenium::WebDriver::Firefox::Options.new
   options.add_argument("--headless")
   options.add_argument("--disable-gpu")
   options.add_argument("--window-size=1400,1400")
 
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
-
-Capybara.javascript_driver = :chrome # or :headless_chrome if you prefer headless
+Capybara.default_driver = :firefox
+Capybara.javascript_driver = :firefox

@@ -16,7 +16,7 @@ RSpec.feature "Add comment", type: :feature do
 
     # Wypełniamy formularz dodawania komentarza
     within("#new_comment_form") do
-      fill_in "comment_content", with: "To jest nowy komentarz."
+      fill_in_trix_editor('comment_content', with: "To jest nowy komentarz.")
       find(".svg-button-comment").click
     end
 
