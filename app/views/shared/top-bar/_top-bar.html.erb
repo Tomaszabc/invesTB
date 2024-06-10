@@ -11,9 +11,9 @@
       </div>
     </div>
   <% elsif controller_name == 'articles' && action_name == 'index' %>
-    <div class="container mx-auto max-w-3xl">
-      <div class="text-2xl ml-4">
-        Blog
+    <div class="container mx-auto max-w-3xl px-4">
+      <div class="text-2xl">
+        <%= link_to "Blog", articles_path, class:"hover:text-white transition-colors" %>
       </div>
     </div>
   <% end %>
