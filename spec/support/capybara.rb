@@ -15,3 +15,6 @@ Capybara.register_driver :headless_firefox do |app|
 end
 Capybara.default_driver = :firefox
 Capybara.javascript_driver = :firefox
+Capybara.default_max_wait_time = 2
+Capybara.default_normalize_ws = true
+Capybara.save_path = ENV.fetch("CAPYBARA_ARTIFACTS", "./tmp/capybara")

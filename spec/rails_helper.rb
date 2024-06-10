@@ -71,6 +71,6 @@ RSpec.configure do |config|
   config.formatter = :documentation
 
   # config.after(:each) do
-  #   sleep 2 
+  #   sleep 2
   # end
 end
