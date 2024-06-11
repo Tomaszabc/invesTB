@@ -3,7 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :user, optional: true
   has_rich_text :content
 
-  validates :content, no_attachments: true
   validate :content_presence
   validate :content_length
   validates :username, presence: {message: "Nazwa użytkownika nie może być pusta"}, length: {maximum: 25, message: "Nazwa użytkownika nie może być dłuższa niż 25 znaków"}, unless: -> { user.present? }
