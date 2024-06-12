@@ -91,3 +91,5 @@ gem "dotenv-rails", groups: [:development, :test]
 
 gem "htmlbeautifier"
 gem "actiontext"
+
+gem 'aws-sdk-rekognition'

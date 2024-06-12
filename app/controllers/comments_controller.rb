@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_article
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :check_image, only: [:create], if: -> { Rails.env.production? }
 
   def show
     respond_to do |format|
@@ -83,6 +84,33 @@ class CommentsController < ApplicationController
 
   private
 
+  def check_image
+    if params[:comment][:image].present?
+      image = params[:comment][:image]
+      rekognition_client = Aws::Rekognition::Client.new
+
+      begin
+        response = rekognition_client.detect_labels({
+          image: {
+            bytes: image.read
+          },
+          max_labels: 10,
+          min_confidence: 75
+        })
+
+        if response.labels.empty?
+          flash.now[:alert] = "Obrazek nie może być zapisany: brak rozpoznawalnych etykiet."
+          redirect_to @article and return
+        end
+
+      rescue Aws::Rekognition::Errors::ServiceError => e
+        flash.now[:alert] = "Błąd podczas przetwarzania obrazu: #{e.message}"
+        redirect_to @article and return
+      end
+    end
+  end
+      
+
   def set_article
     @article = Article.find_by!(slug: params[:article_slug])
   rescue ActiveRecord::RecordNotFound
@@ -94,6 +122,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :username)
+    params.require(:comment).permit(:content, :username, :image)
   end
 end

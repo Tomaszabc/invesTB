@@ -91,6 +91,9 @@ GEM
     aws-sdk-kms (1.80.0)
       aws-sdk-core (~> 3, >= 3.193.0)
       aws-sigv4 (~> 1.1)
+    aws-sdk-rekognition (1.96.0)
+      aws-sdk-core (~> 3, >= 3.193.0)
+      aws-sigv4 (~> 1.1)
     aws-sdk-s3 (1.149.0)
       aws-sdk-core (~> 3, >= 3.194.0)
       aws-sdk-kms (~> 1)
@@ -357,6 +360,7 @@ PLATFORMS
 DEPENDENCIES
   actiontext
   activestorage
+  aws-sdk-rekognition
   aws-sdk-s3
   bootsnap
   capybara

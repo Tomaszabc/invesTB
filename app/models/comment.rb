@@ -2,6 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :article
   belongs_to :user, optional: true
   has_rich_text :content
+  
 
   validate :content_presence
   validate :content_length
