@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_article
   before_action :set_comment, only: [:edit, :update, :destroy]
-  
+
 
   def show
     respond_to do |format|
@@ -12,11 +12,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.build(comment_params)
+    
     if user_signed_in?
       @comment.user = current_user
     else
       @comment.username = params[:comment][:username]
     end
+
     if @comment.save
       session[:comment_ids] ||= []
       session[:comment_ids] << @comment.id
@@ -99,4 +101,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :username, :image)
   end
+
 end

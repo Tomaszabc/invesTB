@@ -85,7 +85,7 @@ gem "dockerfile-rails", ">= 1.6", group: :development
 gem "activestorage"
 gem "mini_magick"
 
-gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3"
 
 gem "dotenv-rails", groups: [:development, :test]
 
@@ -93,3 +93,4 @@ gem "htmlbeautifier"
 gem "actiontext"
 
 gem 'aws-sdk-rekognition'
+gem 'aws-sdk-ec2'

@@ -10,6 +10,8 @@ class Comment < ApplicationRecord
   validate :rate_limit, on: :create
   validate :restricted_username
 
+  after_save :moderate_images
+
   private
 
   def content_presence
@@ -38,6 +40,21 @@ class Comment < ApplicationRecord
   def restricted_username
     if username.present? && username.downcase.include?("tomek in")
       errors.add(:username, "Nazwa użytkownika jest podobna do nazwy administratora.")
+    end
+  end
+
+  def moderate_images
+    content.body.attachments.each do |attachment|
+      if attachment.image?
+        moderation_service = ImageModerationService.new(attachment.key)
+
+        if moderation_service.moderate_image
+          moderation_service.delete_image
+          attachment.purge
+          errors.add(:content, "Obraz zawiera nieodpowiednie treści")
+          raise ActiveRecord::RecordInvalid.new(self)
+        end
+      end
     end
   end
 end

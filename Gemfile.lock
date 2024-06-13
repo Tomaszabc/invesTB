@@ -88,6 +88,9 @@ GEM
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.8)
       jmespath (~> 1, >= 1.6.1)
+    aws-sdk-ec2 (1.459.0)
+      aws-sdk-core (~> 3, >= 3.193.0)
+      aws-sigv4 (~> 1.1)
     aws-sdk-kms (1.80.0)
       aws-sdk-core (~> 3, >= 3.193.0)
       aws-sigv4 (~> 1.1)
@@ -360,6 +363,7 @@ PLATFORMS
 DEPENDENCIES
   actiontext
   activestorage
+  aws-sdk-ec2
   aws-sdk-rekognition
   aws-sdk-s3
   bootsnap
