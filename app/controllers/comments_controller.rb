@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :set_article
   before_action :set_comment, only: [:edit, :update, :destroy]
 
-
   def show
     respond_to do |format|
       format.html { redirect_to @article }
@@ -12,7 +11,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.build(comment_params)
-    
+
     if user_signed_in?
       @comment.user = current_user
     else
@@ -86,8 +85,6 @@ class CommentsController < ApplicationController
 
   private
 
-      
-
   def set_article
     @article = Article.find_by!(slug: params[:article_slug])
   rescue ActiveRecord::RecordNotFound
@@ -101,5 +98,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :username)
   end
-
 end

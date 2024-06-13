@@ -11,9 +11,14 @@
       </div>
     <% end %>
     <% unless user_signed_in? %>
-      <%= form.label :username, "Autor:" %>
-      <div class="field m-2">
-        <%= form.text_field :username, value: form.object.username, class: 'bg-[#222224] p-2 rounded-2xl', autocomplete: "off", id: 'comment_username' %>
+      <p class="ml-4"><%= form.label :username, "Autor:" %></p>
+      <div class="flex items-center justify-between">
+        <div class="field ml-2 flex-grow">
+          <%= form.text_field :username, value: form.object.username, class: 'bg-[#222224] p-2 rounded-2xl w-full w-48', autocomplete: "off", id: 'comment_username' %>
+        </div>
+        <%= link_to 'https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html', target: "_blank" do %>
+          <%= image_tag 'rekognition.png', class: 'h-20 ml-2 rounded-lg mb-2 shadow-2xl opacity-50 hover:opacity-90 transition' %>
+        <% end %>
       </div>
     <% end %>
     <div class="field bg-[#222224] p-2 rounded-2xl">

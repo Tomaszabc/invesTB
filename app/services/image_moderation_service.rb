@@ -7,31 +7,27 @@ class ImageModerationService
   end
 
   def moderate_image
-    begin
-      Rails.logger.info "Moderating image..."
-      response = @rekognition_client.detect_moderation_labels({
-        image: {
-          s3_object: {
-            bucket: @bucket,
-            name: @s3_key
-          }
+    Rails.logger.info "Moderating image..."
+    response = @rekognition_client.detect_moderation_labels({
+      image: {
+        s3_object: {
+          bucket: @bucket,
+          name: @s3_key
         }
-      })
+      }
+    })
 
-      Rails.logger.info "Moderation response: #{response.inspect}"
-      response.moderation_labels.any?
-    rescue Aws::Rekognition::Errors::ServiceError => e
-      Rails.logger.error "Rekognition error: #{e.message}"
-      false
-    end
+    Rails.logger.info "Moderation response: #{response.inspect}"
+    response.moderation_labels.any?
+  rescue Aws::Rekognition::Errors::ServiceError => e
+    Rails.logger.error "Rekognition error: #{e.message}"
+    false
   end
 
   def delete_image
-    begin
-      @s3_client.delete_object(bucket: @bucket, key: @s3_key)
-      Rails.logger.info "Deleted image from S3: #{@s3_key}"
-    rescue Aws::S3::Errors::ServiceError => e
-      Rails.logger.error "S3 delete error: #{e.message}"
-    end
+    @s3_client.delete_object(bucket: @bucket, key: @s3_key)
+    Rails.logger.info "Deleted image from S3: #{@s3_key}"
+  rescue Aws::S3::Errors::ServiceError => e
+    Rails.logger.error "S3 delete error: #{e.message}"
   end
 end
