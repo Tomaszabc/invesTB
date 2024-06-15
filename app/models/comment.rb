@@ -44,16 +44,29 @@ class Comment < ApplicationRecord
 
   def moderate_images
     content.body.attachments.each do |attachment|
-      if attachment.image?
-        moderation_service = ImageModerationService.new(attachment.key)
-
-        if moderation_service.moderate_image
-          moderation_service.delete_image
-          attachment.purge
-          errors.add(:content, "Obraz zawiera nieodpowiednie treści")
-          raise ActiveRecord::RecordInvalid.new(self)
-        end
+      if attachment.is_a?(ActionText::Attachables::RemoteImage)
+        moderate_remote_image(attachment)
+      elsif attachment.respond_to?(:image?) && attachment.image?
+        moderate_active_storage_image(attachment)
       end
+    end
+  end
+
+  def moderate_active_storage_image(attachment)
+    moderation_service = ImageModerationService.new(attachment.key)
+     if moderation_service.moderate_image
+        moderation_service.delete_image
+        attachment.purge
+        errors.add(:content, "Obraz zawiera nieodpowiednie treści")
+        raise ActiveRecord::RecordInvalid.new(self)
+    end
+  end
+
+  def moderate_remote_image(attachment)
+    moderation_service = ImageModerationService.new(attachment.url)
+    if moderation_service.moderate_image
+      errors.add(:content, "Obraz zawiera nieodpowiednie treści")
+      raise ActiveRecord::RecordInvalid.new(self)
     end
   end
 end
