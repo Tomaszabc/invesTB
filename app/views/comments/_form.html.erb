@@ -11,19 +11,17 @@
       </div>
     <% end %>
     <% unless user_signed_in? %>
-      <p class="ml-4"><%= form.label :username, "Autor:" %></p>
       <div class="flex items-center justify-between">
         <div class="field ml-2 flex-grow">
-          <%= form.text_field :username, value: form.object.username, class: 'bg-[#222224] p-2 rounded-2xl w-full w-48', autocomplete: "off", id: 'comment_username' %>
+          <%= form.text_field :username, value: form.object.username, placeholder: "Autor", class: 'bg-[#222224] p-2 rounded-2xl  w-44', autocomplete: "off", id: 'comment_username' %>
         </div>
         <%= link_to 'https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html', target: "_blank" do %>
-          <%= image_tag 'rekognition.png', class: 'h-20 ml-2 rounded-lg mb-2 shadow-2xl opacity-50 hover:opacity-90 transition' %>
+          <%= image_tag 'rekognition.png', class: 'h-14 ml-2 mr-2 rounded-lg mb-2 shadow-2xl opacity-50 hover:opacity-90 transition' %>
         <% end %>
       </div>
     <% end %>
     <div class="field bg-[#222224] p-2 rounded-2xl">
-      <%= form.label "comment_content", "Treść komentarza:" %>
-      <%= form.rich_text_area :content, id: 'comment_content' %>
+      <%= form.rich_text_area :content, placeholder: "Treść komentarza", id: 'comment_content' %>
     </div>
     <div class="actions justify-end flex mr-10 mt-2">
       <%= button_tag(type: 'submit', class: 'svg-button-comment') do %>

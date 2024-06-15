@@ -27,7 +27,7 @@ RSpec.feature "Add comment", type: :feature do
     expect(page).to have_selector("turbo-frame#new_comment_form")
 
     within("turbo-frame#new_comment_form") do
-      fill_in "Autor:", with: "Example user"
+      fill_in "Autor", with: "Example user"
       fill_in_rich_text_area("comment[content]", with: "To jest nowy komentarz.")
       find(".svg-button-comment").click
     end
@@ -45,7 +45,7 @@ RSpec.feature "Add comment", type: :feature do
     expect(page).to have_selector("turbo-frame#new_comment_form")
 
     within("turbo-frame#new_comment_form") do
-      fill_in "Autor:", with: "Example user"
+      fill_in "Autor", with: "Example user"
       fill_in_rich_text_area("comment[content]", with: long_comment)
       find(".svg-button-comment").click
     end
@@ -61,7 +61,7 @@ RSpec.feature "Add comment", type: :feature do
     expect(page).to have_selector("turbo-frame#new_comment_form")
 
     within("turbo-frame#new_comment_form") do
-      fill_in "Autor:", with: "Tomek In"
+      fill_in "Autor", with: "Tomek In"
       fill_in_rich_text_area("comment[content]", with: "To jest nowy komentarz.")
       find(".svg-button-comment").click
     end
@@ -92,7 +92,7 @@ RSpec.feature "Add comment", type: :feature do
     expect(page).to have_selector("turbo-frame#new_comment_form")
 
     within("turbo-frame#new_comment_form") do
-      fill_in "Autor:", with: "Example user"
+      fill_in "Autor", with: "Example user"
       fill_in_rich_text_area("comment[content]", with: "")
       find(".svg-button-comment").click
     end
@@ -113,7 +113,7 @@ RSpec.feature "Add comment", type: :feature do
     expect(page).to have_selector("turbo-frame#new_comment_form")
 
     within("turbo-frame#new_comment_form") do
-      fill_in "Autor:", with: "Example user"
+      fill_in "Autor", with: "Example user"
       fill_in_rich_text_area("comment[content]", with: "To jest nowy komentarz.")
       find(".svg-button-comment").click
     end
