@@ -94,3 +94,4 @@ gem "actiontext"
 
 gem "aws-sdk-rekognition"
 gem "aws-sdk-ec2"
+gem "down"

@@ -1,3 +1,6 @@
+require "down"
+require "aws-sdk-rekognition"
+
 class Comment < ApplicationRecord
   belongs_to :article
   belongs_to :user, optional: true
@@ -54,19 +57,15 @@ class Comment < ApplicationRecord
 
   def moderate_active_storage_image(attachment)
     moderation_service = ImageModerationService.new(attachment.key)
-     if moderation_service.moderate_image
-        moderation_service.delete_image
-        attachment.purge
-        errors.add(:content, "Obraz zawiera nieodpowiednie treści")
-        raise ActiveRecord::RecordInvalid.new(self)
+    if moderation_service.moderate_image
+      moderation_service.delete_image
+      attachment.purge
+      errors.add(:content, "Obraz zawiera nieodpowiednie treści")
+      raise ActiveRecord::RecordInvalid.new(self)
     end
   end
 
   def moderate_remote_image(attachment)
-    moderation_service = ImageModerationService.new(attachment.url)
-    if moderation_service.moderate_image
-      errors.add(:content, "Obraz zawiera nieodpowiednie treści")
-      raise ActiveRecord::RecordInvalid.new(self)
-    end
+    # dokonczyc moderację
   end
 end
