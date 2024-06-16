@@ -1,11 +1,11 @@
 <%= turbo_frame_tag dom_id(comment)  do %>
   <%= form_with(model: [article, comment], local: true, id: 'new_comment_form_#{article.slug}') do |form| %>
     <% if form.object.errors.any? %>
-      <div id="error_explanation", class="justify-center flex">
+      <div id="error_explanation", class="error-container justify-center flex">
         <ul>
           <% form.object.errors.full_messages.each do |message| %>
             <% message = message.sub("Content ", "").sub("Username ", "") %>
-            <li><%= message %></li>
+            <li>-<%= message %></li>
           <% end %>
         </ul>
       </div>
