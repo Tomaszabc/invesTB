@@ -26,8 +26,8 @@
         </div>
       <% end %>
     </div>
-    <p class="text-sm text-slate-400 mb-10 ml-2">
-      <strong><%= comment.created_at.strftime('%d-%m-%Y %H:%M') %></strong>
+    <p class="text-sm text-slate-400 mb-10 ">
+      <%= comment.created_at.strftime('%d-%m-%Y %H:%M') %>
     </p>
     <p class="comment-content"><%= comment.content.body.to_s %></p>
   </div>

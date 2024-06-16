@@ -26,13 +26,24 @@
     </div>
   </article>
 </div>
-<section class='mt-10'>
+<section class='mt-10 mb-20'>
   <%= render 'comments/form', article: @article, comment: Comment.new %>
 </section>
-<h3 class="m-y-4">Komentarze:</h3>
+<h3 class="my-4 flex justify-between items-center">
+  <span class="text-lg">Komentarze:</span>
+  <div class="flex items-center mr-4">
+    <span class="ml-4 text-sm text-slate-400">Sortuj wg:</span>
+    <%= link_to article_path(@article, sort: 'newest'), class: "ml-2 flex items-center text-blue-500" do %>
+      <span class="ml-1 sort-icon-newest"></span>
+    <% end %>
+    <%= link_to article_path(@article, sort: 'oldest'), class: "ml-4 flex items-center text-blue-500" do %>
+      <span class="ml-1 sort-icon-oldest"></span>
+    <% end %>
+  </div>
+</h3>
 <section aria-labelledby="comments-heading" id="comments" class="mt-4">
   <% if @article.comments.any? %>
-    <%= render @article.comments.order(created_at: :desc) %>
+    <%= render @comments %>
   <% else %>
     <p id="no-comment-info" class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
   <% end %>

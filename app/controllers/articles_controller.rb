@@ -21,6 +21,9 @@ class ArticlesController < ApplicationController
       @article.increment!(:views_count)
       session[session_key] = true
     end
+
+    sort_order = params[:sort] == 'oldest' ? :asc : :desc
+    @comments = @article.comments.order(created_at: sort_order)
   rescue ActiveRecord::RecordNotFound
     redirect_to articles_path, alert: "Article not found."
   end
