@@ -41,9 +41,9 @@ trix-editor {
   resize: vertical;
   overflow: auto;
   min-height: 150px; 
-  max-height: 500px; 
+   
   border: 1px solid #cccccc81; 
-  padding: 10px; 
+  padding: 20px; 
   box-sizing: border-box;
   border-radius: 15px 50px
 }
