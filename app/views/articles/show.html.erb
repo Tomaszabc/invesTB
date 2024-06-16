@@ -33,18 +33,20 @@
   <span class="text-lg">Komentarze:</span>
   <div class="flex items-center mr-4">
     <span class="ml-4 text-sm text-slate-400">Sortuj wg:</span>
-    <%= link_to article_path(@article, sort: 'newest'), class: "ml-2 flex items-center text-blue-500" do %>
+    <%= link_to article_path(@article, sort: 'newest'), data: { turbo_frame: 'comments' }, class: "ml-2 flex items-center text-blue-500" do %>
       <span class="ml-1 sort-icon-newest"></span>
     <% end %>
-    <%= link_to article_path(@article, sort: 'oldest'), class: "ml-4 flex items-center text-blue-500" do %>
+    <%= link_to article_path(@article, sort: 'oldest'), data: { turbo_frame: 'comments' }, class: "ml-4 flex items-center text-blue-500" do %>
       <span class="ml-1 sort-icon-oldest"></span>
     <% end %>
   </div>
 </h3>
-<section aria-labelledby="comments-heading" id="comments" class="mt-4">
-  <% if @article.comments.any? %>
-    <%= render @comments %>
-  <% else %>
-    <p id="no-comment-info" class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
-  <% end %>
-</section>
+<%= turbo_frame_tag 'comments' do %>
+  <section aria-labelledby="comments-heading" id="comments" class="mt-4">
+    <% if @article.comments.any? %>
+      <%= render @comments %>
+    <% else %>
+      <p id="no-comment-info" class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
+    <% end %>
+  </section>
+<% end %>

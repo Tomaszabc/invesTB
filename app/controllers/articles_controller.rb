@@ -24,6 +24,11 @@ class ArticlesController < ApplicationController
 
     sort_order = params[:sort] == 'oldest' ? :asc : :desc
     @comments = @article.comments.order(created_at: sort_order)
+    
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   rescue ActiveRecord::RecordNotFound
     redirect_to articles_path, alert: "Article not found."
   end

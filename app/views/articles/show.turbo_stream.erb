@@ -1,0 +1,9 @@
+<%= turbo_stream.replace 'comments' do %>
+  <section aria-labelledby="comments-heading" id="comments" class="mt-4">
+    <% if @comments.any? %>
+      <%= render @comments %>
+    <% else %>
+      <p id="no-comment-info" class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
+    <% end %>
+  </section>
+<% end %>
