@@ -1,5 +1,5 @@
 <%= turbo_frame_tag  "new_comment_form" do %>
-  <%= form_with(model: [article, comment], local: true, id: 'new_comment_form_#{article.slug}') do |form| %>
+  <%= form_with(model: [article, comment], local: true, id: "new_comment_form_#{article.slug}") do |form| %>
     <% if form.object.errors.any? %>
       <div id="error_explanation", class="error-container justify-center flex bg-slate-400 rounded-lg text-black mb-2">
         <ul>

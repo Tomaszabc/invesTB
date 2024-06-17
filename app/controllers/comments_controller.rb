@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include ActionView::RecordIdentifier
+
   before_action :set_article
   before_action :set_comment, only: [:edit, :update, :destroy]
 
@@ -65,12 +67,13 @@ class CommentsController < ApplicationController
         end
         format.html { redirect_to @comment.article, notice: "Komentarz zaktualizowany." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.turbo_stream do
           flash.now[:alert] = "Nie udało się zaktualizować komentarza."
-          render turbo_stream: [
-            turbo_stream.replace("comment_form", partial: "comments/form", locals: {article: @article, comment: @comment})
-          ]
+          render turbo_stream: turbo_stream.replace(dom_id(@comment), partial: "comments/edit_form", locals: {comment: @comment, article: @article})
+        end
+        format.html do
+          flash.now[:alert] = "Nie udało się zaktualizować komentarza."
+          render :edit, status: :unprocessable_entity
         end
       end
     end

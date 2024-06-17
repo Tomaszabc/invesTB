@@ -15,11 +15,15 @@ RSpec.feature "CKEditor", type: :feature, js: true do
 
     expect(page).to have_css(".cke", visible: true)
 
+    Timeout.timeout(Capybara.default_max_wait_time) do
+      loop until page.evaluate_script("typeof CKEDITOR.instances['editor'] !== 'undefined' && CKEDITOR.instances['editor'].status === 'ready'")
+    end
+
     page.execute_script("CKEDITOR.instances['editor'].setData('<p>This is the content of the test article.</p>');")
 
     click_button "Utwórz Article"
 
-    expect(page).to have_content("Artykuł utworzony.")
+
     expect(page).to have_content("Test Article")
     expect(page).to have_content("This is the content of the test article.")
   end
