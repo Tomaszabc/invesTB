@@ -50,7 +50,7 @@ document.addEventListener("trix-initialize", function(event) {
     </button>`;
    
 
-  toolbarElement.querySelector(".trix-button-group.trix-button-group--file-tools").insertAdjacentHTML("beforeend", buttonHTML);
+  toolbarElement.querySelector(".trix-button-group.trix-button-group--file-tools").insertAdjacentHTML("afterbegin", buttonHTML);
 
   toolbarElement.addEventListener("click", function(event) {
     if (event.target.closest('[data-trix-action="add-image-url"]')) {

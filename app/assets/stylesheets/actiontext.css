@@ -47,3 +47,14 @@ trix-editor {
   box-sizing: border-box;
   border-radius: 15px 50px
 }
+
+.trix-button-group .trix-button {
+  margin-right: 8px; /* Zwiększ margines prawy */
+  margin-bottom: 8px;
+  margin-top: 6px; /* Dodaj margines dolny dla lepszego rozkładu na mniejszych ekranach */
+}
+
+/* Opcjonalne: Zmniejsz margines ostatniego przycisku, jeśli jest to konieczne */
+.trix-button-group .trix-button:last-child {
+  margin-right: 0;
+}
