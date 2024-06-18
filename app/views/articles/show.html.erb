@@ -2,7 +2,7 @@
   <article class="flex flex-col justify-between">
     <header>
       <% if notice.present? %>
-        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+        <p class="py-2 px-3 bg-lime-50 mb-5 text-lime-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
       <% end %>
       <p class="my-2">
         <% if @article.article_image.attached? %>
@@ -29,24 +29,9 @@
 <section class='mt-10 mb-20'>
   <%= render 'comments/form', article: @article, comment: Comment.new %>
 </section>
-<h3 class="my-4 flex justify-between items-center">
-  <span class="text-lg">Komentarze:</span>
-  <div class="flex items-center mr-4">
-    <span class="ml-4 text-sm text-slate-400">Sortuj wg:</span>
-    <%= link_to article_path(@article, sort: 'newest'), data: { turbo_frame: 'comments' }, class: "ml-2 flex items-center text-blue-500" do %>
-      <span class="ml-1 sort-icon-newest <%='active' if session[:comment_sort_order] == 'newest' %>"></span>
-    <% end %>
-    <%= link_to article_path(@article, sort: 'oldest'), data: { turbo_frame: 'comments' }, class: "ml-4 flex items-center text-blue-500" do %>
-      <span class="ml-1 sort-icon-oldest <%='active' if session[:comment_sort_order] == 'oldest' %>"></span>
-    <% end %>
-  </div>
-</h3>
-<%= turbo_frame_tag 'comments' do %>
-  <section aria-labelledby="comments-heading" id="comments" class="mt-4">
-    <% if @article.comments.any? %>
-      <%= render @comments %>
-    <% else %>
-      <p id="no-comment-info" class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
-    <% end %>
-  </section>
+<%= turbo_frame_tag 'sort_controls', id: 'sort_controls' do %>
+  <%= render 'articles/sort_controls', article: @article %>
+<% end %>
+<%= turbo_frame_tag 'comments', id: 'comments' do %>
+  <%= render 'articles/comments', comments: @comments %>
 <% end %>

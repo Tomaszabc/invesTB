@@ -1,0 +1,12 @@
+<h3 class="my-4 flex justify-between items-center">
+  <span class="text-lg">Komentarze:</span>
+  <div class="flex items-center mr-4">
+    <span class="ml-4 text-sm text-slate-400">Sortuj wg:</span>
+    <%= link_to article_path(@article, sort: 'newest'), data: { turbo_frame: ['comments', 'sort_controls'] }, class: "ml-2 flex items-center text-blue-500 #{'active' if session[:comment_sort_order] == 'newest'}" do %>
+      <span class="ml-1 sort-icon-newest <%='active' if session[:comment_sort_order] == 'newest' %>"></span>
+    <% end %>
+    <%= link_to article_path(@article, sort: 'oldest'), data: { turbo_frame: ['comments', 'sort_controls'] }, class: "ml-4 flex items-center text-blue-500 #{'active' if session[:comment_sort_order] == 'oldest'}" do %>
+      <span class="ml-1 sort-icon-oldest <%='active' if session[:comment_sort_order] == 'oldest' %>"></span>
+    <% end %>
+  </div>
+</h3>
