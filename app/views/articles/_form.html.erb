@@ -35,4 +35,14 @@
 
       });
   });
+
+  // Article submit not working, this script fix it.
+  document.addEventListener("turbo:submit-end", function(event) {
+  if (event.detail.success) {
+    const responseUrl = event.detail.fetchResponse.response.url;
+    if (responseUrl) {
+      window.location.href = responseUrl;
+    }
+  }
+  });
 </script>

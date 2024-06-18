@@ -54,11 +54,11 @@ document.addEventListener("trix-initialize", function(event) {
 
   toolbarElement.addEventListener("click", function(event) {
     if (event.target.closest('[data-trix-action="add-image-url"]')) {
-      var url = prompt("Enter image URL");
+      var url = prompt("Wprowadź adres obrazka");
       if (url) {
                 addImageUrl(url);
       } else {
-        alert("Invalid URL. Please enter a valid image URL.");
+        alert("Niepoprawny link.");
       }
     }
   });

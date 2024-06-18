@@ -22,12 +22,12 @@ class ArticlesController < ApplicationController
       session[session_key] = true
     end
 
-    sort_order = params[:sort] == 'oldest' ? :asc : :desc
+    sort_order = (params[:sort] == "oldest") ? :asc : :desc
     @comments = @article.comments.order(created_at: sort_order)
-    
+
     respond_to do |format|
       format.html
-      format.turbo_stream
+      format.turbo_stream { render "articles/comments_show" }
     end
   rescue ActiveRecord::RecordNotFound
     redirect_to articles_path, alert: "Article not found."
@@ -48,9 +48,11 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        Rails.logger.info("Article created successfully: #{@article.title}")
         format.html { redirect_to article_url(@article), notice: "Artykuł utworzony." }
         format.json { render :show, status: :created, location: @article }
       else
+        Rails.logger.error("Failed to create article: #{@article.errors.full_messages}")
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end

@@ -8,3 +8,5 @@ import "trix_custom_toolbar"
 import "trix_custom_config"
 
 Rails.start()
+
+

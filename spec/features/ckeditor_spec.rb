@@ -22,7 +22,7 @@ RSpec.feature "CKEditor", type: :feature, js: true do
     page.execute_script("CKEDITOR.instances['editor'].setData('<p>This is the content of the test article.</p>');")
 
     click_button "Utwórz Article"
-
+    save_and_open_page
 
     expect(page).to have_content("Test Article")
     expect(page).to have_content("This is the content of the test article.")
