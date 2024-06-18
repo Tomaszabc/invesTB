@@ -22,7 +22,11 @@ class ArticlesController < ApplicationController
       session[session_key] = true
     end
 
-    sort_order = (params[:sort] == "oldest") ? :asc : :desc
+    if params[:sort]
+      session[:comment_sort_order] = params[:sort]
+    end
+
+    sort_order = (session[:comment_sort_order] == "newest") ? :desc : :asc
     @comments = @article.comments.order(created_at: sort_order)
 
     respond_to do |format|
