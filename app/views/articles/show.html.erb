@@ -29,9 +29,6 @@
 <section class='mt-10 mb-20'>
   <%= render 'comments/form', article: @article, comment: Comment.new %>
 </section>
-<%= turbo_frame_tag 'sort_controls', id: 'sort_controls' do %>
-  <%= render 'articles/sort_controls', article: @article %>
-<% end %>
 <%= turbo_frame_tag 'comments', id: 'comments' do %>
   <%= render 'articles/comments', comments: @comments %>
 <% end %>

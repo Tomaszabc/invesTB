@@ -33,8 +33,7 @@ class ArticlesController < ApplicationController
       format.html
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace("comments", partial: "articles/comments", locals: {comments: @comments}),
-          turbo_stream.replace("sort_controls", partial: "articles/sort_controls", locals: {article: @article})
+          turbo_stream.replace("comments", partial: "articles/comments", locals: {comments: @comments})
         ]
       end
     end

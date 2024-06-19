@@ -1,4 +1,4 @@
-app = 'investb'
+app = 'investb-db'
 primary_region = 'arn'
 console_command = '/rails/bin/rails console'
 
