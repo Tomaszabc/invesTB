@@ -12,6 +12,8 @@
   width: 100%;
   max-width: 90%;
   padding: 0 16px;
+
+  z-index: 9999;
 }
 
 .flash__message {
@@ -25,6 +27,8 @@
   padding: 30px 24px;
   box-sizing: border-box; 
   text-align: center;
+
+  z-index: 9999;
 }
 
 @keyframes appear-then-fade {
