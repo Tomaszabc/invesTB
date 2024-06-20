@@ -1,5 +1,4 @@
   <%= render 'articles/sort_controls', article: @article %>
-
 <section aria-labelledby="comments-heading" id="comments" class="mt-4">
   <% if @article.comments.any? %>
     <%= render @comments %>

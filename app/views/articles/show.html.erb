@@ -6,9 +6,13 @@
       <% end %>
       <p class="my-2">
         <% if @article.article_image.attached? %>
-          <%= image_tag @article.resized_article_image, alt: 'Artykuł', class: "rounded w-full" %>
+          <%= link_to url_for(@article.article_image), data: { lightbox: 'article-images', title: 'Artykuł' } do %>
+            <%= image_tag @article.resized_article_image, alt: 'Artykuł', class: "rounded w-full" %>
+          <% end %>
         <% else %>
-          <%= image_tag 'article_image.jpg', alt: 'Artykuł', class: "rounded w-full" %>
+          <%= link_to image_path('article_image.jpg'), data: { lightbox: 'article-images', title: 'Artykuł' } do %>
+            <%= image_tag 'article_image.jpg', alt: 'Artykuł', class: "rounded w-full" %>
+          <% end %>
         <% end %>
       </p>
       <p class="text-sm text-slate-400 text-right  mr-4">
