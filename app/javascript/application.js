@@ -14,7 +14,9 @@ Rails.start()
 
 document.addEventListener("turbo:load", () => {
   lightbox.option({
-    'resizeDuration': 200,
-    'wrapAround': true
+    'resizeDuration': 50,
+    'wrapAround': true,
+    'fadeDuration': 50,
+    'fitImagesInViewport': true,
   });
 });
