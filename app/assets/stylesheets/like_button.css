@@ -20,9 +20,9 @@
 }
 
 .svg-container {
-  width: 60px; /* Możesz dostosować rozmiar */
+  width: 60px; 
   height: auto;
-  margin-right: 10px; /* Odległość między ikoną a tekstem */
+  margin-right: 10px; 
 }
 
 .svg-container svg {

@@ -36,7 +36,7 @@
       });
   });
 
-  // Article submit not working, this script fix it.
+  // Article submit stops working, this script fix it.
   document.addEventListener("turbo:submit-end", function(event) {
   if (event.detail.success) {
     const responseUrl = event.detail.fetchResponse.response.url;

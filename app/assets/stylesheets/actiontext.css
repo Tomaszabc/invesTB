@@ -49,12 +49,12 @@ trix-editor {
 }
 
 .trix-button-group .trix-button {
-  margin-right: 8px; /* Zwiększ margines prawy */
+  margin-right: 8px; 
   margin-bottom: 8px;
-  margin-top: 6px; /* Dodaj margines dolny dla lepszego rozkładu na mniejszych ekranach */
+  margin-top: 6px; 
 }
 
-/* Opcjonalne: Zmniejsz margines ostatniego przycisku, jeśli jest to konieczne */
+
 .trix-button-group .trix-button:last-child {
   margin-right: 0;
 }

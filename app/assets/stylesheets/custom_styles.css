@@ -24,13 +24,13 @@ body {
 .article-content img,
 .article-content iframe,
 .article-content video {
-  display: block; /* Ustawia element jako blokowy */
-  width: 100%; /* Ustawia szerokość na 100% kontenera */
-  max-width: 100%; /* Umożliwia responsywność */
-  margin: 20px 0; /* Dodaje marginesy góra-dół */
-  border: 1px solid #000; /* Dodaje cienką czarną ramkę */
-  border-radius: 10px; /* Zaokrągla rogi */
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Dodaje subtelny cień */
+  display: block; 
+  width: 100%; 
+  max-width: 100%; 
+  margin: 20px 0; 
+  border: 1px solid #000; 
+  border-radius: 10px; 
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -40,7 +40,7 @@ body {
 }
 
 .hover-scale:hover .image-scale {
-  transform: scale(1.03); /* Skaluje obrazek o 20% */
+  transform: scale(1.03); 
 }
 
 .svg-button-comment {
@@ -155,7 +155,7 @@ body {
 }
 
 .text-lime-600 {
-  color: #84cc16; /* Użyj odpowiedniego kodu koloru */
+  color: #84cc16; 
 }
 
 .sort-icon-newest,
@@ -177,8 +177,8 @@ body {
 
 .sort-icon-newest.active,
 .sort-icon-oldest.active {
-  filter: brightness(2); /* Zwiększenie jasności ikony */
-  transition: filter 0.3s; /* Opcjonalnie: dodaj animację przejścia */
+  filter: brightness(2); 
+  transition: filter 0.3s; 
 }
 
 @keyframes fadeIn {
@@ -192,6 +192,6 @@ body {
 
 .error-container {
   opacity: 0;
-  animation: fadeIn 1s forwards; /* 1s is the duration of the animation */
+  animation: fadeIn 1s forwards; 
 }
 
