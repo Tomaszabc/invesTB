@@ -7,6 +7,7 @@ import "trix"
 import "@rails/actiontext"
 import "trix_custom_toolbar"
 import "trix_custom_config"
+import "lightbox_images"
 
 Rails.start()
 
