@@ -7,6 +7,7 @@ document.addEventListener("turbo:load", function() {
       anchor.setAttribute('data-lightbox', 'article-images');
       image.parentNode.insertBefore(anchor, image);
       anchor.appendChild(image);
+      image.classList.add('lightbox-image');
     }
   });
 });
