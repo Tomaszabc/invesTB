@@ -34,6 +34,6 @@
   <%= render 'comments/form', article: @article, comment: Comment.new %>
 </section>
 <%= render 'articles/sort_controls', article: @article %>
-<%= turbo_frame_tag 'comments', id: 'comments' do %>
+<%= turbo_frame_tag 'comments' do %>
   <%= render 'articles/comments_list', comments: @comments %>
 <% end %>

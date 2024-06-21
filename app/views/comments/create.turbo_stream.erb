@@ -6,7 +6,7 @@
 <%= turbo_stream.prepend "flash", partial: "shared/flash_messages" %>
 
 <%= turbo_stream.replace "comments" do %>
-  <%= render partial: "articles/comments_list", locals: { comments: @article.comments.order(created_at: (session[:comment_sort_order] == 'newest' ? :desc : :asc)) } %>
+  <%= render partial: "articles/comments", locals: { comments: @article.comments.order(created_at: (session[:comment_sort_order] == 'newest' ? :desc : :asc)) } %>
 <% end %>
 
 <%= turbo_stream.update "no-comment-info" %>
