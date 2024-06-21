@@ -1,8 +1,4 @@
 <%= render 'articles/sort_controls', article: @article %>
-<section aria-labelledby="comments-heading" id="comments" class="mt-4">
-  <% if comments.any? %>
-    <%= render comments %>
-  <% else %>
-    <p id="no-comment-info" class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
-  <% end %>
-</section>
+<%= turbo_frame_tag 'comments', id: 'comments' do %>
+  <%= render 'articles/comments_list', comments: @comments %>
+<% end %>

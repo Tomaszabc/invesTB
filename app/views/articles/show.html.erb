@@ -33,6 +33,7 @@
 <section class='mt-10 mb-20'>
   <%= render 'comments/form', article: @article, comment: Comment.new %>
 </section>
+<%= render 'articles/sort_controls', article: @article %>
 <%= turbo_frame_tag 'comments', id: 'comments' do %>
-  <%= render 'articles/comments', comments: @comments %>
+  <%= render 'articles/comments_list', comments: @comments %>
 <% end %>
