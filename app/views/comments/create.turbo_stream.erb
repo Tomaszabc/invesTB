@@ -1,11 +1,12 @@
-<%= turbo_stream.prepend "comments" do %>
-  <%= render @comment %>
-<% end %>
 
 <%= turbo_stream.update "new_comment_form" do %>
   <%= render partial: "comments/form", locals: { article: @article, comment: Comment.new(username: @comment.username) } %>
 <% end %>
 
 <%= turbo_stream.prepend "flash", partial: "shared/flash_messages" %>
+
+<%= turbo_stream.replace "comments" do %>
+  <%= render partial: "articles/comments", locals: { comments: @article.comments.order(created_at: (session[:comment_sort_order] == 'newest' ? :desc : :asc)) } %>
+<% end %>
 
 <%= turbo_stream.update "no-comment-info" %>

@@ -1,7 +1,7 @@
-  <%= render 'articles/sort_controls', article: @article %>
+<%= render 'articles/sort_controls', article: @article %>
 <section aria-labelledby="comments-heading" id="comments" class="mt-4">
-  <% if @article.comments.any? %>
-    <%= render @comments %>
+  <% if comments.any? %>
+    <%= render comments %>
   <% else %>
     <p id="no-comment-info" class="text-center text-gray-500">Brak komentarzy. Bądź pierwszy.</p>
   <% end %>

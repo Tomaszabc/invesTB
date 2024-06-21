@@ -23,6 +23,8 @@ class CommentsController < ApplicationController
     if @comment.save
       session[:comment_ids] ||= []
       session[:comment_ids] << @comment.id
+
+      
       respond_to do |format|
         format.turbo_stream { flash.now[:notice] = "Komentarz dodany" }
         format.html { redirect_to @article, notice: "Komentarz dodany." }
