@@ -1,4 +1,4 @@
-<%= render 'articles/sort_controls', article: @article %>
 <%= turbo_frame_tag 'comments', id: 'comments' do %>
+  <%= render 'articles/sort_controls', article: @article %>
   <%= render 'articles/comments_list', comments: @comments %>
 <% end %>
