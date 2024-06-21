@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
       session[:comment_ids] ||= []
       session[:comment_ids] << @comment.id
 
+      @comments = @article.comments.order(created_at: (session[:comment_sort_order] == 'newest' ? :desc : :asc))
       
       respond_to do |format|
         format.turbo_stream { flash.now[:notice] = "Komentarz dodany" }
