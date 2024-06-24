@@ -7,7 +7,14 @@ import "trix"
 import "@rails/actiontext"
 import "trix_custom_toolbar"
 import "trix_custom_config"
+import "jquery"
+import lightbox from "lightbox2"
 import "lightbox_images"
+
+document.addEventListener("turbo:load", () => {
+  lightbox.init();
+});
+
 
 Rails.start()
 
