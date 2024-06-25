@@ -60,7 +60,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_24_090452) do
     t.string "slug"
     t.integer "sequential_number"
     t.integer "views_count", default: 0
-    t.integer "likes_count", default: 0
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
