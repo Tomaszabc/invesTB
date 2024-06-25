@@ -1,8 +1,16 @@
 body {
-  background-color: #181A20;
+  background-color: #202228;
   color: #c0c5cd;
   min-height: 800px;
 }
+
+main {
+  background-color: #181A20; /* Ensure this color matches your design */
+  padding: 1rem; /* Optional: Add padding if needed */
+  border-radius: 0.5rem; /* Optional: Add border-radius for rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better contrast */
+}
+
 .top-bar {
   height: 60px;
   background-color: #0A0E11;
