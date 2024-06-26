@@ -214,3 +214,7 @@ body {
   max-width: 90% !important;
   max-height: 90% !important;
 }
+
+.bg-color-article-index {
+  background-color: #27292f;
+}
