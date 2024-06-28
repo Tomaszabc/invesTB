@@ -5,7 +5,6 @@ pin "@rails/ujs", to: "https://cdn.skypack.dev/@rails/ujs"
 pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers", preload: true
-pin "lightbox", to: "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"
 pin "ckeditor", to: "ckeditor/ckeditor.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
