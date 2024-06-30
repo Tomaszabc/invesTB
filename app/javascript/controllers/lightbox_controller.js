@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import * as lightbox from "lightbox2";  
+import * as lightbox from "lightbox2";  // Import Lightbox z paczki npm/yarn
 
 export default class extends Controller {
   connect() {
