@@ -6,14 +6,14 @@
       <% end %>
       <p class="my-2">
         <% if @article.article_image.attached? %>
-          <%= link_to url_for(@article.article_image), data: { lightbox: 'article-images', title: @article.title } do %>
-            <%= image_tag @article.resized_article_image, alt: @article.title, class: "rounded w-full" %>
-          <% end %>
-        <% else %>
-          <%= link_to image_path('article_image.jpg'), data: { lightbox: 'article-images', title: @article.title } do %>
-            <%= image_tag 'article_image.jpg', alt: @article.title, class: "rounded w-full" %>
-          <% end %>
-        <% end %>
+  <%= link_to url_for(@article.article_image), class: 'glightbox', data: { gallery: 'article-images', title: @article.title } do %>
+    <%= image_tag url_for(@article.resized_article_image), alt: @article.title, class: 'mx-auto' %>
+  <% end %>
+<% else %>
+  <%= link_to image_path('article_image.jpg'), data: { lightbox: 'article-images', title: @article.title } do %>
+    <%= image_tag image_path('article_image_thumb.jpg'), alt: @article.title, class: 'mx-auto' %>
+  <% end %>
+<% end %>
       </p>
       <p class="text-sm text-slate-400 text-right  mr-4">
         <strong><%= @article.created_at.strftime('%d-%m-%Y') %></strong>
@@ -37,3 +37,11 @@
   <%= render 'articles/sort_controls', article: @article %>
   <%= render 'articles/comments_list', comments: @comments %>
 <% end %>
+
+<script type="text/javascript">
+  const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: true
+  });
+</script>
