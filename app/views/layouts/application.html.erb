@@ -9,19 +9,19 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" 
-    rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <%= javascript_importmap_tags %>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <%= render 'shared/top-bar/top-bar'%>
+    <%= render 'shared/top-bar/top-bar' %>
+    <%= render 'shared/flash_messages' %>
     <div id="flash" class="flash">
       <%= render "shared/flash_messages" %>
     </div>
-    <main class="container mx-auto mt-8 px-3 max-w-4xl mb-16 opacity" >
+    <main class="container mx-auto mt-8 px-3 max-w-6xl mb-16 opacity">
       <%= yield %>
     </main>
   </body>

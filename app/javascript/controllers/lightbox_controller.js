@@ -1,24 +1,8 @@
-import Rails from "@rails/ujs";
-import "@hotwired/turbo-rails";
-import "controllers";
-import "trix";
-import "@rails/actiontext";
-import "trix_custom_toolbar";
-import "trix_custom_config";
-import "lightbox_images";
-import $ from "jquery";  // Import jQuery
+import { Controller } from "@hotwired/stimulus";
 import lightbox from "lightbox2";  // Import Lightbox z paczki npm/yarn
 
-document.addEventListener("turbo:load", function() {
-  initializeLightbox();
-});
-
-window.addEventListener('popstate', function() {
-  initializeLightbox();
-});
-
-function initializeLightbox() {
-  if (typeof lightbox !== 'undefined') {
+export default class extends Controller {
+  connect() {
     lightbox.option({
       'resizeDuration': 50,
       'wrapAround': true,
@@ -26,7 +10,7 @@ function initializeLightbox() {
       'fitImagesInViewport': true,
     });
 
-    const images = document.querySelectorAll('.article-content img');
+    const images = this.element.querySelectorAll('.article-content img');
     images.forEach(image => {
       if (!image.parentNode.matches('a[data-lightbox]')) {
         const anchor = document.createElement('a');
@@ -41,5 +25,3 @@ function initializeLightbox() {
     lightbox.init();
   }
 }
-
-Rails.start();
