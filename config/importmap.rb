@@ -13,4 +13,3 @@ pin "trix_custom_toolbar", to: "trix/trix_custom_toolbar.js"
 pin "jquery", to: "https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js", preload: true
 pin "lightbox2", to: "https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js", preload: true
 
-pin "lightbox_images"

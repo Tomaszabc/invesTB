@@ -3,6 +3,10 @@ import * as lightbox from "lightbox2";  // Import Lightbox z paczki npm/yarn
 
 export default class extends Controller {
   connect() {
+    this.initializeLightbox();
+  }
+
+  initializeLightbox() {
     lightbox.option({
       'resizeDuration': 50,
       'wrapAround': true,
@@ -21,8 +25,6 @@ export default class extends Controller {
         image.classList.add('lightbox-image');
       }
     });
-
-    
 
     lightbox.init();
   }

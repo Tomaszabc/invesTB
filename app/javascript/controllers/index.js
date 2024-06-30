@@ -9,3 +9,5 @@ eagerLoadControllersFrom("controllers", application)
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
+import LightboxImagesController from "controllers/lightbox_images_controller";
+application.register("lightbox-images", LightboxImagesController);
