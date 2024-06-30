@@ -6,7 +6,7 @@ import "@rails/actiontext";
 import "trix_custom_toolbar";
 import "trix_custom_config";
 
-import $ from "jquery";  // Import jQuery
-import * as lightbox from "lightbox2";  // Import Lightbox z paczki npm/yarn
+import $ from "jquery";
+import * as lightbox from "lightbox2";  
 
 Rails.start();
