@@ -14,7 +14,6 @@ class Article < ApplicationRecord
 
     article_image.variant(resize_to_limit: [700, 350]).processed
   end
-  
 
   def generate_slug
     self.slug = title.parameterize if title.present?
