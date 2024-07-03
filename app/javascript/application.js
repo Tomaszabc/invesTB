@@ -4,14 +4,14 @@ import "controllers";
 import "trix";
 import "@rails/actiontext";
 import "trix_custom_toolbar";
-import "trix_custom_config";
+import "trix_custom_config"; // Popraw import
 
 Rails.start();
 
 function initializeLightbox() {
   console.log('Initializing Lightbox');
 
-  const images = document.querySelectorAll('.article-content img');
+  const images = document.querySelectorAll('.article-content img, .comment-content img');
   images.forEach(image => {
     if (!image.parentNode.matches('a[data-lightbox]')) {
       console.log('Wrapping image:', image);
@@ -46,32 +46,57 @@ function initializeLightbox() {
   });
 }
 
+function initializeTrixEditors() {
+  const editors = document.querySelectorAll('.trix-editor');
+  editors.forEach(editor => {
+    if (!editor.editor) {
+      console.log('Initializing Trix editor:', editor);
+      new Trix.Editor(editor);
+    }
+  });
+  console.log('Trix editors initialized');
+}
+
+// Importuj funkcje z trix_custom_config.js
+import { setupTrixToolbar, setupTrixConfig } from "trix_custom_config";
+
+function initializeAll() {
+  initializeLightbox();
+  initializeTrixEditors();
+  setupTrixToolbar();
+  setupTrixConfig();
+  console.log('All scripts initialized');
+}
+
 document.addEventListener('turbo:load', function() {
   console.log('Turbo load event detected');
-  initializeLightbox();
+  initializeAll();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOMContentLoaded event detected');
-  initializeLightbox();
+  initializeAll();
 });
 
-// Turbo frame listener to reinitialize Lightbox for comments
 document.addEventListener('turbo:frame-load', function(event) {
   if (event.target.id === 'comments') {
     console.log('Turbo frame-load event detected for comments');
-    initializeLightbox();
+    initializeAll();
   }
 });
 
-// Listen for Turbo Stream updates to reinitialize Lightbox
 document.addEventListener('turbo:before-stream-render', function(event) {
   const frame = event.target.querySelector('turbo-frame#comments');
   if (frame) {
     console.log('Turbo before-stream-render event detected for comments');
     frame.addEventListener('turbo:frame-render', () => {
       console.log('Turbo frame-render event detected for comments');
-      initializeLightbox();
+      initializeAll();
     }, { once: true });
   }
+});
+
+document.addEventListener('turbo:render', function() {
+  console.log('Turbo render event detected');
+  initializeAll();
 });
