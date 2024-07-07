@@ -6,6 +6,7 @@ import $ from 'jquery';
 export default class extends Controller {
   connect() {
     this.initializeLightbox();
+    this.setupEventListeners();
   }
 
   initializeLightbox() {
@@ -33,13 +34,11 @@ export default class extends Controller {
     });
   }
 
-  // Metody do obsługi różnych zdarzeń Turbo
-  turboLoadEventHandler() {
-    this.initializeLightbox();
-  }
-
-  domContentLoadedEventHandler() {
-    this.initializeLightbox();
+  setupEventListeners() {
+    document.addEventListener('turbo:load', () => this.initializeLightbox());
+    document.addEventListener('DOMContentLoaded', () => this.initializeLightbox());
+    document.addEventListener('turbo:frame-load', event => this.turboFrameLoadEventHandler(event));
+    document.addEventListener('turbo:before-stream-render', event => this.turboBeforeStreamRenderEventHandler(event));
   }
 
   turboFrameLoadEventHandler(event) {
