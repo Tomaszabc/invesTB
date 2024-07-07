@@ -6,35 +6,10 @@ import "@rails/actiontext";
 import "./trix/trix_custom_toolbar";
 import "./trix/trix_custom_config";
 
-import 'lightbox2';
 import $ from 'jquery';
+import { setupTrixToolbar, setupTrixConfig } from "./trix/trix_custom_config";
 
 Rails.start();
-
-function initializeLightbox() {
-  const images = document.querySelectorAll('.article-content img, .comment-content img');
-  images.forEach(image => {
-    if (!image.parentNode.matches('a[data-lightbox]')) {
-      const anchor = document.createElement('a');
-      anchor.href = image.src;
-      anchor.setAttribute('data-lightbox', 'article-images');
-      if (image.alt) {
-        anchor.setAttribute('data-title', image.alt);
-      }
-      image.parentNode.insertBefore(anchor, image);
-      anchor.appendChild(image);
-    }
-  });
-
-  if (typeof lightbox !== 'undefined' && lightbox.init) {
-    lightbox.init();
-  }
-
-  $('a[data-lightbox]').off('click').on('click', function(event) {
-    event.preventDefault(); // Prevent the default link behavior
-    lightbox.start($(this));  // Manually start Lightbox using jQuery
-  });
-}
 
 function initializeTrixEditors() {
   const editors = document.querySelectorAll('.trix-editor');
@@ -45,11 +20,7 @@ function initializeTrixEditors() {
   });
 }
 
-// Importuj funkcje z trix_custom_config.js
-import { setupTrixToolbar, setupTrixConfig } from "./trix/trix_custom_config";
-
 function initializeAll() {
-  initializeLightbox();
   initializeTrixEditors();
   setupTrixToolbar();
   setupTrixConfig();
