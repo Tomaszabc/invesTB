@@ -10,8 +10,8 @@
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
 import { application } from "./application";
-import RemovalsController from "./removals_controller.js";
-import LightboxController from "./lightbox_controller.js";
+import RemovalsController from "./removals_controller";
+import LightboxController from "./lightbox_controller";
 
 application.register("removals", RemovalsController);
 application.register("lightbox", LightboxController);

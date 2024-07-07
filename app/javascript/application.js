@@ -6,6 +6,9 @@ import "@rails/actiontext";
 import "./trix/trix_custom_toolbar";
 import "./trix/trix_custom_config";
 
+import 'lightbox2';
+import $ from 'jquery';
+
 Rails.start();
 
 function initializeLightbox() {
