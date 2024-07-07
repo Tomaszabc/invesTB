@@ -1,10 +1,10 @@
 import Rails from "@rails/ujs";
 import "@hotwired/turbo-rails";
-import "controllers";
+import "./controllers";
 import "trix";
 import "@rails/actiontext";
-import "trix_custom_toolbar";
-import "trix_custom_config"; // Popraw import
+import "./trix/trix_custom_toolbar";
+import "./trix/trix_custom_config";
 
 Rails.start();
 
@@ -43,7 +43,7 @@ function initializeTrixEditors() {
 }
 
 // Importuj funkcje z trix_custom_config.js
-import { setupTrixToolbar, setupTrixConfig } from "trix_custom_config";
+import { setupTrixToolbar, setupTrixConfig } from "./trix/trix_custom_config";
 
 function initializeAll() {
   initializeLightbox();

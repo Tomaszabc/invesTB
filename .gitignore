@@ -37,3 +37,4 @@
 !.env.example
 /config/credentials/production.key
 /node_modules
+/node_modules
