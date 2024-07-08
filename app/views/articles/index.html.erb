@@ -1,7 +1,14 @@
-<div class="w-full max-w-5xl mx-auto">
+<div class="w-full max-w-4xl mx-auto">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-lime-50 mb-5 text-lime-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
+<p class="ml-4 border-b-2 border-dotted border-slate-500 mb-2">
+    Najlepsze artykuły:
+  </p>
+  <div id="top-articles" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <%= render 'top_articles', articles: @top_articles %>
+  </div>
+
   <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-2">
     Najnowsze wpisy:
   </p>

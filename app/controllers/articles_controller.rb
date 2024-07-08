@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
+    @top_articles = Article.top_articles
     @articles = if params[:slug]
       Article.where(slug: params[:slug]).order(id: :desc)
     else
