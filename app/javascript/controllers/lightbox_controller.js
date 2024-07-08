@@ -56,3 +56,16 @@ export default class extends Controller {
     }
   }
 }
+
+
+
+    lightbox.option({
+      'resizeDuration': 200,
+      'fadeDuration': 50,
+      'wrapAround': true,
+      'disableScrolling': false,
+      'alwaysShowNavOnTouchDevices': true
+      
+    })
+
+

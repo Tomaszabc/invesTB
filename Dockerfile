@@ -19,13 +19,17 @@ ENV BUNDLE_DEPLOYMENT="1" \
 RUN gem update --system --no-document && \
     gem install -N bundler
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Install packages needed to build gems
+# Install packages needed to build gems and assets
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev git
+    apt-get install --no-install-recommends -y build-essential libpq-dev git curl
+
+# Install Node.js 18 and Yarn
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g yarn
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
@@ -36,12 +40,14 @@ RUN bundle install && \
 # Copy application code
 COPY --link . .
 
+# Install JavaScript dependencies
+RUN yarn install
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
-
+RUN SECRET_KEY_BASE=DUMMY bundle exec rails assets:precompile
 
 # Final stage for app image
 FROM base
@@ -65,11 +71,8 @@ USER 1000:1000
 ENV RAILS_LOG_TO_STDOUT="1" \
     RAILS_SERVE_STATIC_FILES="true"
 
-
-
 # Entrypoint sets up the container.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
