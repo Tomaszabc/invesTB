@@ -1,6 +1,8 @@
+@import "trix/dist/trix.css";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
 
 @import "./custom_styles.css";
 @import "./dropdown_edit_comments.css";
