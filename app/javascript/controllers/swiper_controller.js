@@ -7,6 +7,7 @@ export default class extends Controller {
       // Optional parameters
       direction: 'horizontal',
       loop: true,
+      spaceBetween: 120,
       // If we need pagination
       pagination: {
         el: '.swiper-pagination',

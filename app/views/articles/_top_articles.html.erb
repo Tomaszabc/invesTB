@@ -5,8 +5,10 @@
     <div class="swiper-wrapper">
       <% articles.each do |article| %>
         <div class="swiper-slide">
-          <div class=" flex justify-center">
-            <h2><%= link_to article.title, article_path(article) %></h2>
+          <div class="article-slide" style="background-image: url(<%= article.article_image.attached? ? url_for(article.article_image) : asset_path('article_image.jpg') %>);">
+            <div class="article-title-container">
+              <h2 class="article-title"><%= link_to article.title, article_path(article) %></h2>
+            </div>
           </div>
         </div>
       <% end %>
@@ -17,38 +19,67 @@
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
   </div>
 </div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <style>
   .swiper {
-    width: 100%;
-    max-width: 600px;
-    height: 80px;
+   width: 100%;
+   max-width: 600px;
+   height: 120px; /* Adjusted height for better visibility */
+   padding: 0 50px; /* Padding for the arrows to be outside the image */
   }
 
   .swiper-slide {
-    display: flex;
-    font-size: 18px;
-    justify-content: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 18px;
+   position: relative;
+  }
+
+  .article-slide {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-size: cover;
+   background-position: center;
+   position: relative;
+   text-align: center;
+   background-repeat: no-repeat;
+   border-radius: 12px; /* Rounded corners for the background image */
+  }
+
+  .article-title-container {
+   background: rgba(51, 53, 59, 0.7); /* Semi-transparent background */
+   padding: 8px 16px;
+   border-radius: 8px; /* Rounded corners for the text background */
+   margin: 0 16px;
+  }
+
+  .article-title {
+   color: white; /* Change to your desired text color */
+   font-size: 24px; /* Adjust font size */
   }
 
   .swiper-button-next, .swiper-button-prev {
-    color: gray;
+   color: gray;
   }
 
   .swiper-pagination-bullet {
-    background: #33353b; /* Light black for inactive bullets */
-    opacity: 1;
+   background: #33353b; /* Light black for inactive bullets */
+   opacity: 0.8;
+
   }
 
   .swiper-pagination-bullet-active {
-    background: gray; /* Gray for active bullet */
+   background: white; /* Gray for active bullet */
   }
 
   .swiper-scrollbar-drag {
-    background: #33353b; /* Gray for scrollbar drag handle */
+   background: #33353b; /* Gray for scrollbar drag handle */
   }
 </style>
