@@ -20,6 +20,7 @@ module Investb
     config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
     config.assets.enabled = true
+    config.assets.precompile += %w[application.js application.css]
     config.assets.paths << Rails.root.join("/app/assets/fonts")
     config.i18n.default_locale = :pl
     config.autoload_paths += %W["#{config.root}/app/validators"]

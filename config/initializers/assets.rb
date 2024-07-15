@@ -10,6 +10,8 @@ Rails.application.config.assets.version = "1.0"
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.application.config.assets.precompile += %w[application.js application.css]
+
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "images")
 Rails.application.config.assets.paths << Rails.root.join("node_modules", "lightbox2", "dist", "images")
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "builds")
+Rails.application.config.assets.precompile += %w[application.js application.css]

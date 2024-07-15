@@ -1,25 +1,29 @@
 <div class="w-full max-w-4xl mx-auto my-4">
-  <!-- Slider main container -->
-  <div data-controller="swiper" class="swiper">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <% articles.each do |article| %>
-        <div class="swiper-slide">
-          <div class="article-slide" style="background-image: url(<%= article.article_image.attached? ? url_for(article.article_image) : asset_path('article_image.jpg') %>);">
-            <div class="article-title-container">
-              <h2 class="article-title"><%= link_to article.title, article_path(article) %></h2>
+  <!-- Check if there are any top articles -->
+  <% if @top_articles.present? %>
+    <!-- Slider main container -->
+    <div data-controller="swiper" class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <% @top_articles.each do |article| %>
+          <div class="swiper-slide">
+            <div class="article-slide" style="background-image: url(<%= article.article_image.attached? ? url_for(article.article_image) : asset_path('article_image.jpg') %>);">
+              <div class="article-title-container">
+                <h2 class="article-title"><%= link_to article.title, article_path(article) %></h2>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <!-- If we need scrollbar -->
-  </div>
+  <% else %>
+    <p class="text-center text-gray-500">Brak ważnych artykułów</p>
+  <% end %>
 </div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -27,7 +31,7 @@
   .swiper {
    width: 100%;
    max-width: 600px;
-   height: 120px; /* Adjusted height for better visibility */
+   height: 160px; /* Adjusted height for better visibility */
    padding: 0 50px; /* Padding for the arrows to be outside the image */
   }
 
