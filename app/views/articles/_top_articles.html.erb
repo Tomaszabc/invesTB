@@ -1,7 +1,54 @@
-<div class="w-full max-w-4xl mx-auto">
-<% articles.each do |article| %>
-    <div class="article">
-      <h2><%= link_to article.title, article_path(article) %></h2>
+<div class="w-full max-w-4xl mx-auto my-4">
+  <!-- Slider main container -->
+  <div data-controller="swiper" class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <% articles.each do |article| %>
+        <div class="swiper-slide">
+          <div class=" flex justify-center">
+            <h2><%= link_to article.title, article_path(article) %></h2>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<style>
+  .swiper {
+    width: 100%;
+    max-width: 600px;
+    height: 80px;
+  }
+
+  .swiper-slide {
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    color: gray;
+  }
+
+  .swiper-pagination-bullet {
+    background: #33353b; /* Light black for inactive bullets */
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: gray; /* Gray for active bullet */
+  }
+
+  .swiper-scrollbar-drag {
+    background: #33353b; /* Gray for scrollbar drag handle */
+  }
+</style>

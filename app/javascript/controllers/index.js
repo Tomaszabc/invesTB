@@ -12,6 +12,9 @@
 import { application } from "./application";
 import RemovalsController from "./removals_controller";
 import LightboxController from "./lightbox_controller";
+import SwiperController from "./swiper_controller";
+
 
 application.register("removals", RemovalsController);
 application.register("lightbox", LightboxController);
+application.register("swiper", SwiperController);

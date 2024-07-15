@@ -10,7 +10,7 @@
 @import "./lightbox.style.css.erb";
 @import "./like_button.css";
 @import "./actiontext.css";
-
+@import "./swiper_custom.css";
 
 @font-face {
   font-family: 'Anta-Regular';

@@ -30,7 +30,6 @@ else
   puts "Artykuł  nie został znaleziony."
 end
 
-
 article = Article.find_by(title: "Podstawy Analizy Technicznej")
 if article
   article.update(category: "top_article")

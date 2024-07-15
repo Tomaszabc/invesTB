@@ -6,6 +6,7 @@ import "@rails/actiontext";
 import "./trix/trix_custom_toolbar";
 import "./trix/trix_custom_config";
 
+
 import $ from 'jquery';
 import { setupTrixToolbar, setupTrixConfig } from "./trix/trix_custom_config";
 

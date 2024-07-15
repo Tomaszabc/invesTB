@@ -9,7 +9,7 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  scope :top_articles, -> { where(category: 'top_article') }
+  scope :top_articles, -> { where(category: "top_article") }
 
   def resized_article_image
     return unless article_image.attached?
