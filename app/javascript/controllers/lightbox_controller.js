@@ -64,7 +64,8 @@ export default class extends Controller {
       'fadeDuration': 50,
       'wrapAround': true,
       'disableScrolling': false,
-      'alwaysShowNavOnTouchDevices': true
+      'alwaysShowNavOnTouchDevices': true,
+      'showImageNumberLabel': false
       
     })
 

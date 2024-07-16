@@ -60,7 +60,7 @@ body:has(dialog[data-dialog-target='dialog'][open]) {
 
 /* Customize the dialog backdrop */
 dialog {
-  box-shadow: 0 0 0 100vw rgb(0 0 0 / 0.5);
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.5);
 }
 
 @keyframes fade-in {
