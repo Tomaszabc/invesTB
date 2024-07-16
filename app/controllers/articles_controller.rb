@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @top_articles = Article.top_articles
+    @top_articles = Article.top_articles.order(Arel.sql("top_article_number IS NULL, top_article_number ASC"))
     @articles = if params[:slug]
       Article.where(slug: params[:slug]).order(id: :desc)
     else
