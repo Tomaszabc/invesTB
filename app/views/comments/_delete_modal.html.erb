@@ -3,7 +3,7 @@
     <p class="modal-content">Czy chcesz skasować komentarz?</p>
     <div class="modal-actions">
       <%= button_to '', article_comment_path(@article, comment), method: :delete, class: "btn-delete icon-trash modal-delete" %>
-      <button type="button" data-action="dialog#close" class="modal-cancel" autofocus>Zamknij</button>
+      <button type="button" data-action="dialog#close" class="modal-cancel" autofocus>Anuluj</button>
     </div>
   </dialog>
   <a class="block px-3 py-2 hover:bg-gray-400 duration-300 m-4 rounded">
