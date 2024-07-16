@@ -11,9 +11,11 @@
 @import "./like_button.css";
 @import "./actiontext.css";
 @import "./swiper_custom.css";
+@import "./delete_modal.css";
 
 @font-face {
   font-family: 'Anta-Regular';
   src: url('Anta-Regular.ttf') format('truetype');
 }
+
 

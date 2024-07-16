@@ -1,0 +1,12 @@
+<div data-controller="dialog" data-action="click->dialog#backdropClose">
+  <dialog data-dialog-target="dialog" class="modal">
+    <p class="modal-content">Czy chcesz skasować komentarz?</p>
+    <div class="modal-actions">
+      <%= button_to '', article_comment_path(@article, comment), method: :delete, class: "btn-delete icon-trash modal-delete" %>
+      <button type="button" data-action="dialog#close" class="modal-cancel" autofocus>Zamknij</button>
+    </div>
+  </dialog>
+  <a class="block px-3 py-2 hover:bg-gray-400 duration-300 m-4 rounded">
+    <button type="button" data-action="dialog#open" class="btn-delete icon-trash"></button>
+  </a>
+</div>
