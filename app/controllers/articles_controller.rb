@@ -108,8 +108,10 @@ class ArticlesController < ApplicationController
 
   def load_more
     offset = params[:offset].to_i
-    @articles = Article.order(created_at: :desc).offset(offset).limit(6)
-    render partial: 'articles/more_articles', locals: { articles: @articles }
+    limit = 6
+    @articles = Article.order(created_at: :desc).offset(offset).limit(limit)
+    more_articles = Article.count > offset + limit
+    render partial: 'articles/more_articles', locals: { articles: @articles, more_articles: more_articles }
   end
 
   private

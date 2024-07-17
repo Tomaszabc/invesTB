@@ -1,3 +1,4 @@
 <% articles.each do |article| %>
   <%= render 'article', article: article %>
 <% end %>
+<div id="more-articles-flag" data-more-articles="<%= more_articles %>"></div>
