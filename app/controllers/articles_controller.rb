@@ -111,7 +111,7 @@ class ArticlesController < ApplicationController
     limit = 6
     @articles = Article.order(created_at: :desc).offset(offset).limit(limit)
     more_articles = Article.count > offset + limit
-    render partial: 'articles/more_articles', locals: { articles: @articles, more_articles: more_articles }
+    render partial: "articles/more_articles", locals: {articles: @articles, more_articles: more_articles}
   end
 
   private

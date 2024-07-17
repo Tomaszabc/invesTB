@@ -37,6 +37,3 @@ if article
 else
   puts "Artykuł  nie został znaleziony."
 end
-
-
-
