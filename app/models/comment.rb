@@ -8,6 +8,8 @@ class Comment < ApplicationRecord
 
   validate :content_presence
   validate :content_length
+  validate :validate_attachment_size
+  validate :validate_attachment_content_type
   validates :username, presence: {message: "Nazwa użytkownika nie może być pusta"}, length: {maximum: 25, message: "Nazwa użytkownika nie może być dłuższa niż 25 znaków"}, unless: -> { user.present? }
   validate :rate_limit, on: :create
   validate :restricted_username
@@ -42,6 +44,24 @@ class Comment < ApplicationRecord
   def restricted_username
     if username.present? && username.downcase.include?("tomek in")
       errors.add(:username, "Nazwa użytkownika jest podobna do nazwy administratora.")
+    end
+  end
+
+  def validate_attachment_size
+    max_size_in_megabytes = 10
+    content.body.attachments.each do |attachment|
+      if attachment.byte_size > max_size_in_megabytes.megabytes
+        errors.add(:content, "Rozmiar pliku nie może przekraczać 10 MB")
+      end
+    end
+  end
+
+  def validate_attachment_content_type
+    allowed_types = ["image/jpeg", "image/png", "image/gif"]
+    content.body.attachments.each do |attachment|
+      unless allowed_types.include?(attachment.content_type)
+        errors.add(:content, "Dozwolone są tylko pliki JPEG, PNG, GIF")
+      end
     end
   end
 
