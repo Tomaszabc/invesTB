@@ -12,6 +12,8 @@
 @import "./actiontext.css";
 @import "./swiper_custom.css";
 @import "./delete_modal.css";
+@import "./load_more_button.css";
+@import "./blog_button.css";
 
 @font-face {
   font-family: 'Anta-Regular';

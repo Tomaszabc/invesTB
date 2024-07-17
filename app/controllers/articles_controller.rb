@@ -5,11 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @top_articles = Article.top_articles.order(Arel.sql("top_article_number IS NULL, top_article_number ASC"))
-    @articles = if params[:slug]
-      Article.where(slug: params[:slug]).order(id: :desc)
-    else
-      Article.order(id: :desc)
-    end
+    @articles = Article.order(id: :desc).limit(6)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -108,6 +104,12 @@ class ArticlesController < ApplicationController
           partial: "shared/like_button", locals: {article: @article})
       end
     end
+  end
+
+  def load_more
+    offset = params[:offset].to_i
+    @articles = Article.order(created_at: :desc).offset(offset).limit(6)
+    render partial: 'articles/more_articles', locals: { articles: @articles }
   end
 
   private

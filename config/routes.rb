@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   }, skip: [:registrations]
 
   resources :articles, param: :slug do
+    collection do
+      get :load_more
+    end
     resources :comments, only: [:edit, :create, :update, :destroy, :show]
     member do
       post "like"
