@@ -50,7 +50,7 @@ class Comment < ApplicationRecord
   def validate_attachment_size
     max_size_in_megabytes = 10
     content.body.attachments.each do |attachment|
-      if attachment.byte_size > max_size_in_megabytes.megabytes
+      if attachment.attachable.is_a?(ActiveStorage::Blob) && attachment.byte_size > max_size_in_megabytes.megabytes
         errors.add(:content, "Rozmiar pliku nie może przekraczać 10 MB")
       end
     end
