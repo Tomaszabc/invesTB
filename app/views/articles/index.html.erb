@@ -1,3 +1,4 @@
+<!-- app/views/articles/index.html.erb -->
 <div class="w-full max-w-4xl mx-auto" data-controller="articles">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-lime-50 mb-5 text-lime-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
@@ -16,6 +17,7 @@
   </div>
   <div class="text-center my-12">
     <button id="load-more" class="button-78" data-action="click->articles#loadMoreArticles" data-target="articles.loadMoreButton">Pokaż więcej artykułów</button>
+    <div class="loader" data-target="articles.loader"></div>
   </div>
 </div>
 <footer class="container mx-auto mt-16 px-3 max-w-4xl mb-16" >

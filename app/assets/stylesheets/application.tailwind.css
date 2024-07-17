@@ -14,6 +14,7 @@
 @import "./delete_modal.css";
 @import "./load_more_button.css";
 @import "./blog_button.css";
+@import "./loader.css";
 
 @font-face {
   font-family: 'Anta-Regular';
