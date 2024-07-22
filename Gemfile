@@ -68,6 +68,7 @@ group :development do
   # gem "spring"
 
   gem "standard"
+  gem 'listen', '~> 3.7'
 end
 
 group :development, :test do
