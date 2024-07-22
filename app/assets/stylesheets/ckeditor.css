@@ -1,0 +1,16 @@
+.article-content ul {
+  list-style-type: disc !important; /* Ensure it overrides other styles */
+  padding-left: 20px !important; /* Ensure space for bullets */
+  margin-left: 20px !important; /* Ensure margin is set */
+}
+
+.article-content ol {
+  list-style-type: decimal !important;
+  padding-left: 20px !important;
+  margin-left: 20px !important;
+}
+
+.article-content li {
+  list-style-type: inherit !important; /* Ensure list items inherit the list-style-type */
+  padding-left: 5px; /* Add padding to li elements if needed */
+}

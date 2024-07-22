@@ -15,6 +15,7 @@
 @import "./load_more_button.css";
 @import "./blog_button.css";
 @import "./loader.css";
+@import "./ckeditor.css";
 
 @font-face {
   font-family: 'Anta-Regular';
