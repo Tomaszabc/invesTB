@@ -3,15 +3,25 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-lime-50 mb-5 text-lime-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-  <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-6">
-    Najważniejsze artykuły:
+  <% if params[:category] == "analysis"%>
+
+   <% else %>
+    <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-6">
+      Najważniejsze artykuły:
+    </p>
+    <div id="top-articles" class="mb-6">
+      <%= render 'top_articles', articles: @top_articles %>
+    </div>
+  <% end %>
+  <% if params[:category] == "analysis"%>
+    <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-2">
+    Najnowsze analizy:
   </p>
-  <div id="top-articles" class="mb-6">
-    <%= render 'top_articles', articles: @top_articles %>
-  </div>
-  <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-2">
+  <% else %>
+    <p class="ml-4 border-b-2 border-dotted border-slate-500 mb-2">
     Najnowsze wpisy:
   </p>
+  <% end %>
   <div id="articles" class="grid grid-cols-1 md:grid-cols-2 gap-6" data-target="articles.articles">
     <%= render @articles %>
   </div>

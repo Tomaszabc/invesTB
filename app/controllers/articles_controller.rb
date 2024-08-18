@@ -114,14 +114,31 @@ class ArticlesController < ApplicationController
   def load_more
     offset = params[:offset].to_i
     limit = 6
-    @articles = Article.order(created_at: :desc).offset(offset).limit(limit)
-    more_articles = Article.count > offset + limit
-    render partial: "articles/more_articles", locals: {articles: @articles, more_articles: more_articles}
+    
+    if params[:category].present?
+      
+      @articles = Article.where(category: params[:category]).order(created_at: :desc).offset(offset).limit(limit)
+      
+    
+      more_articles = Article.where(category: params[:category]).count > offset + limit
+    else
+      
+      @articles = Article.order(created_at: :desc).offset(offset).limit(limit)
+      
+    
+      more_articles = Article.count > offset + limit
+    end
+    
+    Rails.logger.info("Loaded #{@articles.size} articles, more_articles=#{more_articles}")
+    render partial: "articles/more_articles", locals: { articles: @articles, more_articles: more_articles }
   end
+  
+  
+  
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+ 
   def set_article
     if params[:slug]
       @article = Article.find_by(slug: params[:slug])
@@ -132,7 +149,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # Only allow a list of trusted parameters through.
+
   def article_params
     params.require(:article).permit(:title, :content, :article_image)
   end

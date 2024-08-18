@@ -9,16 +9,27 @@ export default class extends Controller {
 
   loadMoreArticles() {
     this.showLoader();
-    const fetchArticles = fetch(`/articles/load_more?offset=${this.offset}`)
+  
+    // Get the current category from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+  
+    // Add the category to the fetch URL if it's present
+    let fetchUrl = `/articles/load_more?offset=${this.offset}`;
+    if (category) {
+      fetchUrl += `&category=${category}`;
+    }
+  
+    const fetchArticles = fetch(fetchUrl)
       .then(response => response.text());
-
+  
     const delay = new Promise(resolve => setTimeout(resolve, 500)); // 500ms delay
-
+  
     Promise.all([fetchArticles, delay])
       .then(([html]) => {
         this.articlesTarget.insertAdjacentHTML('beforeend', html);
         this.offset += 6;
-
+  
         const moreArticlesFlag = document.querySelector('#more-articles-flag');
         if (moreArticlesFlag) {
           const moreArticles = moreArticlesFlag.dataset.moreArticles === 'true';
