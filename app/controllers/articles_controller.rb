@@ -5,7 +5,12 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @top_articles = Article.top_articles.order(Arel.sql("top_article_number IS NULL, top_article_number ASC"))
-    @articles = Article.order(id: :desc).limit(6)
+    if params[:category]
+      @articles = Article.where(category: params[:category])
+      
+    else
+      @articles = Article.order(id: :desc).limit(6)
+    end
   end
 
   # GET /articles/1 or /articles/1.json
