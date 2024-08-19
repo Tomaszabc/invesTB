@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     @top_articles = Article.top_articles.order(Arel.sql("top_article_number IS NULL, top_article_number ASC"))
 
     if params[:category] == "articles" || params[:category] == "top_article" || params[:category].blank?
-      @articles = Article.where(category: ["articles", "top_article"]).order(id: :desc).limit(6)
+      @articles = Article.where(category: ["articles", "top_article"]).distinct.order(id: :desc).limit(6)
     else
       @articles = Article.where(category: params[:category]).order(id: :desc).limit(6)
     end
@@ -117,22 +117,26 @@ class ArticlesController < ApplicationController
     limit = 6
     
     if params[:category].present?
-      
-      @articles = Article.where(category: params[:category]).order(created_at: :desc).offset(offset).limit(limit)
-      
-    
-      more_articles = Article.where(category: params[:category]).count > offset + limit
+      @articles = Article.where(category: params[:category])
+                         .order(created_at: :desc)
+                         .offset(offset)
+                         .limit(limit)
     else
-      
-      @articles = Article.order(created_at: :desc).offset(offset).limit(limit)
-      
-    
-      more_articles = Article.count > offset + limit
+      @articles = Article.order(created_at: :desc)
+                         .offset(offset)
+                         .limit(limit)
     end
     
-    Rails.logger.info("Loaded #{@articles.size} articles, more_articles=#{more_articles}")
+    Rails.logger.info("Fetched Articles IDs: #{@articles.pluck(:id).join(', ')}") # Debugging line
+    
+    more_articles = Article.where(category: params[:category])
+                           .count > offset + limit if params[:category].present?
+    more_articles ||= Article.count > offset + limit
+    
     render partial: "articles/more_articles", locals: { articles: @articles, more_articles: more_articles }
   end
+  
+  
   
   
   
