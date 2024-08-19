@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper_method :resource, :resource_name, :devise_mapping
+  include CommentPermissions
+  helper_method :resource, :resource_name, :devise_mapping, :can_delete_comment?
 
   private
 
@@ -15,10 +16,5 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def can_delete_comment?(comment)
-    return true if user_signed_in? && comment.user == current_user
-    return true if session[:comment_ids]&.include?(comment.id)
-
-    false
-  end
+  
 end
