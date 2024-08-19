@@ -6,12 +6,11 @@ class ArticlesController < ApplicationController
   def index
     @top_articles = Article.top_articles.order(Arel.sql("top_article_number IS NULL, top_article_number ASC"))
 
-    if params[:category] == "articles" || params[:category] == "top_article" || params[:category].blank?
-      @articles = Article.where(category: ["articles", "top_article"]).distinct.order(id: :desc).limit(6)
+    @articles = if params[:category] == "articles" || params[:category] == "top_article" || params[:category].blank?
+      Article.where(category: ["articles", "top_article"]).distinct.order(id: :desc).limit(20)
     else
-      @articles = Article.where(category: params[:category]).order(id: :desc).limit(6)
+      Article.where(category: params[:category]).order(id: :desc).limit(20)
     end
-
   end
 
   # GET /articles/1 or /articles/1.json
@@ -115,35 +114,31 @@ class ArticlesController < ApplicationController
   def load_more
     offset = params[:offset].to_i
     limit = 6
-    
-    if params[:category].present?
-      @articles = Article.where(category: params[:category])
-                         .order(created_at: :desc)
-                         .offset(offset)
-                         .limit(limit)
+
+    @articles = if params[:category].present?
+      Article.where(category: params[:category])
+        .order(created_at: :desc)
+        .offset(offset)
+        .limit(limit)
     else
-      @articles = Article.order(created_at: :desc)
-                         .offset(offset)
-                         .limit(limit)
+      Article.order(created_at: :desc)
+        .offset(offset)
+        .limit(limit)
     end
-    
-    Rails.logger.info("Fetched Articles IDs: #{@articles.pluck(:id).join(', ')}") # Debugging line
-    
-    more_articles = Article.where(category: params[:category])
-                           .count > offset + limit if params[:category].present?
+
+    Rails.logger.info("Fetched Articles IDs: #{@articles.pluck(:id).join(", ")}") # Debugging line
+
+    if params[:category].present?
+      more_articles = Article.where(category: params[:category])
+        .count > offset + limit
+    end
     more_articles ||= Article.count > offset + limit
-    
-    render partial: "articles/more_articles", locals: { articles: @articles, more_articles: more_articles }
+
+    render partial: "articles/more_articles", locals: {articles: @articles, more_articles: more_articles}
   end
-  
-  
-  
-  
-  
 
   private
 
- 
   def set_article
     if params[:slug]
       @article = Article.find_by(slug: params[:slug])
@@ -154,8 +149,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-
   def article_params
-    params.require(:article).permit(:title, :content, :article_image)
+    params.require(:article).permit(:title, :content, :article_image, :category)
   end
 end

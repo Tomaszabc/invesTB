@@ -23,7 +23,23 @@ export default class extends Controller {
     fetch(fetchUrl)
       .then((response) => response.text())
       .then((html) => {
-        this.articlesTarget.insertAdjacentHTML("beforeend", html);
+        // Parse the new articles into a DOM structure
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        const newArticles = doc.querySelectorAll("a[id^='article_']");
+
+        // Get the IDs of existing articles to avoid duplicates
+        const existingArticleIds = new Set(
+          Array.from(this.articlesTarget.querySelectorAll("a[id^='article_']")).map(article => article.id)
+        );
+
+        // Append only new articles that aren't already in the DOM
+        newArticles.forEach(article => {
+          if (!existingArticleIds.has(article.id)) {
+            this.articlesTarget.appendChild(article);
+          }
+        });
+
         this.offset += 6; // Increase the offset by the number of articles fetched
 
         // Handle the "Load more" button and loader visibility

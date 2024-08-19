@@ -17,7 +17,12 @@
     <%= form.label :content %>
     <%= form.text_area :content, id: "editor", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="field">
+
+  <div class="my-5">
+    <%= form.label :category %>
+    <%= form.select :category, Article.categories.keys.map { |key| [key.humanize, key] }, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+
+  <div class="field my-5">
     <%= form.label :article_image %>
     <%= form.file_field :article_image %>
   </div>

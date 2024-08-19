@@ -6,6 +6,8 @@ class Article < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_one_attached :article_image
 
+  enum category: {analysis: 0, articles: 1, top_article: 2}
+
   validates :title, presence: true
   validates :content, presence: true
 
