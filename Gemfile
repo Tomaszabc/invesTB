@@ -98,3 +98,4 @@ gem "down"
 gem "jsbundling-rails"
 
 gem 'trestle'
+gem 'trestle-auth'
