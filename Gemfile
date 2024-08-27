@@ -96,3 +96,5 @@ gem "aws-sdk-rekognition"
 gem "aws-sdk-ec2"
 gem "down"
 gem "jsbundling-rails"
+
+gem 'trestle'
