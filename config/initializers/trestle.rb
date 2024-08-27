@@ -5,10 +5,15 @@ Trestle.configure do |config|
   # Set the page title shown in the main header within the admin.
   #
   #
-  config.before_action do |_controller|
-    unless current_user.admin?
-      redirect_to '/'
-      flash[:error] = "Brak uprawnień"
+  config.before_action do |controller|
+    # Allow the user to access the login page without redirection
+    unless controller.is_a?(Trestle::Auth::SessionsController)
+      if current_user.nil?
+        redirect_to login_path, notice: "Musisz się zalogować, aby uzyskać dostęp."
+      elsif !current_user.admin?
+        flash[:notice] = "Brak uprawnień"
+        redirect_to main_app.root_path
+      end
     end
   end
   
