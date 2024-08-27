@@ -4,12 +4,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @top_articles = Article.top_articles.order(Arel.sql("top_article_number IS NULL, top_article_number ASC"))
+    @top_articles = Article.top_articles.where(publish: true).order(Arel.sql("top_article_number IS NULL, top_article_number ASC"))
 
     @articles = if params[:category] == "articles" || params[:category] == "top_article" || params[:category].blank?
-      Article.where(category: ["articles", "top_article"]).distinct.order(id: :desc).limit(20)
+      Article.where(category: ["articles", "top_article"], publish: true).distinct.order(id: :desc).limit(20)
     else
-      Article.where(category: params[:category]).order(id: :desc).limit(20)
+      Article.where(category: params[:category], publish: true).order(id: :desc).limit(20)
     end
   end
 
@@ -147,9 +147,12 @@ class ArticlesController < ApplicationController
     else
       raise ActiveRecord::RecordNotFound, "Nie znaleziono"
     end
+    unless @article.publish? || current_user&.admin?
+      redirect_to articles_path, alert: "Artykuł nie jest dostępny."
+    end
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :article_image, :category)
+    params.require(:article).permit(:title, :content, :article_image, :category, :publish)
   end
 end
