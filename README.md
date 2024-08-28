@@ -7,3 +7,5 @@ Investing site
 
 
 -"bundle exec rspec" command is used for Capybara testing.
+
+![App image](img_readme/investb_img.png)
