@@ -1,8 +1,8 @@
-@import "trix/dist/trix.css";
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@import "trix/dist/trix.css";
 
 @import "./custom_styles.css";
 @import "./dropdown_edit_comments.css";
@@ -23,3 +23,8 @@
 }
 
 
+body {
+  background-color: #202228;
+  color: #c0c5cd;
+  min-height: 800px;
+}
