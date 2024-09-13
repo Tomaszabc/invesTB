@@ -4,27 +4,21 @@
 
 @import "trix/dist/trix.css";
 
-@import "./custom_styles.css";
-@import "./dropdown_edit_comments.css";
-@import "./flash_messages.css";
-@import "./lightbox.style.css";
-@import "./like_button.css";
-@import "./actiontext.css";
-@import "./swiper_custom.css";
-@import "./delete_modal.css";
-@import "./load_more_button.css";
-@import "./blog_button.css";
-@import "./loader.css";
-@import "./ckeditor.css";
+@import "components/custom_styles.css";
+@import "components/dropdown_edit_comments.css";
+@import "components/flash_messages.css";
+@import "components/lightbox.style.css";
+@import "components/like_button.css";
+@import "components/actiontext.css";
+@import "components/swiper_custom.css";
+@import "components/delete_modal.css";
+@import "components/load_more_button.css";
+@import "components/blog_button.css";
+@import "components/loader.css";
+@import "components/ckeditor.css";
 
 @font-face {
   font-family: 'Anta-Regular';
   src: url('Anta-Regular.ttf') format('truetype');
 }
 
-
-body {
-  background-color: #202228;
-  color: #c0c5cd;
-  min-height: 800px;
-}
