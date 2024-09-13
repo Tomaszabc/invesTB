@@ -4,18 +4,18 @@
 
 @import "trix/dist/trix.css";
 
-@import "components/custom_styles.css";
-@import "components/dropdown_edit_comments.css";
-@import "components/flash_messages.css";
-@import "components/lightbox.style.css";
-@import "components/like_button.css";
-@import "components/actiontext.css";
-@import "components/swiper_custom.css";
-@import "components/delete_modal.css";
-@import "components/load_more_button.css";
-@import "components/blog_button.css";
-@import "components/loader.css";
-@import "components/ckeditor.css";
+@import "./components/custom_styles.css";
+@import "./components/dropdown_edit_comments.css";
+@import "./components/flash_messages.css";
+@import "./components/lightbox.style.css";
+@import "./components/like_button.css";
+@import "./components/actiontext.css";
+@import "./components/swiper_custom.css";
+@import "./components/delete_modal.css";
+@import "./components/load_more_button.css";
+@import "./components/blog_button.css";
+@import "./components/loader.css";
+@import "./components/ckeditor.css";
 
 @font-face {
   font-family: 'Anta-Regular';
