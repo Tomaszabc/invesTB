@@ -1,0 +1,13 @@
+.article-content span,
+.article-content p {
+  font-size: inherit; /* Dziedziczenie rozmiaru czcionki z elementu nadrzędnego */
+  line-height: inherit; /* Dziedziczenie odstępów między liniami */
+}
+
+@media (min-width: 1024px) {
+  .article-content span,
+  .article-content p {
+    font-size: inherit; /* Zachowanie większego rozmiaru czcionki */
+    line-height: inherit;
+  }
+}

@@ -1,6 +1,7 @@
 
 @import "trix/dist/trix.css";
 
+@import "./components/font_sizing.css";
 @import "./components/custom_styles.css";
 @import "./components/dropdown_edit_comments.css";
 @import "./components/flash_messages.css";
