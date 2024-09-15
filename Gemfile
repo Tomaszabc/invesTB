@@ -98,5 +98,5 @@ gem "down"
 gem "jsbundling-rails"
 gem "cssbundling-rails"
 
-gem 'trestle'
-gem 'trestle-auth'
+gem "trestle"
+gem "trestle-auth"

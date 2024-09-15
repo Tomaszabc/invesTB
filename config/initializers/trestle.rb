@@ -1,4 +1,3 @@
-
 Trestle.configure do |config|
   # == Customization Options
   #
@@ -16,11 +15,8 @@ Trestle.configure do |config|
       end
     end
   end
-  
+
   config.site_title = "Investb"
-
-
-
 
   # Specify a custom image to be used in place of the site title for mobile and
   # expanded/desktop navigation. These images should be placed within your

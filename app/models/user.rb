@@ -9,13 +9,12 @@ class User < ApplicationRecord
   validates :display_name, presence: true, uniqueness: true
 
   def admin?
-    role == 'admin'
+    role == "admin"
   end
 
   private
 
   def set_default_role
-    self.role ||= 'user'
+    self.role ||= "user"
   end
-
 end
