@@ -29,11 +29,11 @@
       <%= render 'shared/like_button' %>
     </div>
   </article>
+  <section class='mt-10 mb-20'>
+    <%= render 'comments/form', article: @article, comment: Comment.new %>
+  </section>
+  <%= turbo_frame_tag 'comments' do %>
+    <%= render 'articles/sort_controls', article: @article %>
+    <%= render 'articles/comments_list', comments: @comments %>
+  <% end %>
 </div>
-<section class='mt-10 mb-20'>
-  <%= render 'comments/form', article: @article, comment: Comment.new %>
-</section>
-<%= turbo_frame_tag 'comments' do %>
-  <%= render 'articles/sort_controls', article: @article %>
-  <%= render 'articles/comments_list', comments: @comments %>
-<% end %>
