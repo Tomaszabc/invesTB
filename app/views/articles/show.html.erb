@@ -22,22 +22,7 @@
         Wyświetlenia: <%= @article.views_count %>
       </div>
       <div data-controller="lightbox" class="article-content my-6">
-        <% content = JSON.parse(@article.content) %>
-<% content["blocks"].each do |block| %>
-  <% if block["type"] == "paragraph" %>
-    <p><%= block["data"]["text"].html_safe %></p>
-  <% elsif block["type"] == "header" %>
-    <h2><%= block["data"]["text"].html_safe %></h2>
-  <% elsif block["type"] == "list" %>
-    <ul>
-      <% block["data"]["items"].each do |item| %>
-        <li><%= item.html_safe %></li>
-      <% end %>
-    </ul>
-  <% elsif block["type"] == "image" %>
-    <img src="<%= block["data"]["url"] %>" alt="Obraz" />
-  <% end %>
-<% end %>
+        <%= raw @article.content %>
       </div>
     </header>
     <div class="mt-6 mr-6">

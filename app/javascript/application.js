@@ -5,11 +5,6 @@ import "trix";
 import "@rails/actiontext";
 import "./trix/trix_custom_toolbar";
 import "./trix/trix_custom_config";
-import EditorJS from '@editorjs/editorjs';
-import Header from '@editorjs/header';
-import List from '@editorjs/list';
-import Embed from '@editorjs/embed';
-import SimpleImage from '@editorjs/simple-image';
 
 
 import $ from 'jquery';
@@ -58,34 +53,3 @@ document.addEventListener('turbo:before-stream-render', function(event) {
 document.addEventListener('turbo:render', function() {
   initializeAll();
 });
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  const editor = new EditorJS({
-    holder: 'editor',
-    tools: {
-      header: {
-        class: Header,
-        inlineToolbar: ['link'],
-        config: {
-          placeholder: 'Enter a header'
-        },
-        shortcut: 'CMD+SHIFT+H'
-      },
-      list: {
-        class: List,
-        inlineToolbar: true
-      },
-      embed: Embed,
-      image: SimpleImage
-    },
-    onChange: function() {
-      editor.save().then((outputData) => {
-        document.getElementById('content-hidden').value = JSON.stringify(outputData);
-      }).catch((error) => {
-        console.log('Saving failed: ', error);
-      });
-    }
-  });
-});
-
