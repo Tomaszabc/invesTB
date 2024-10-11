@@ -5,7 +5,7 @@ import "trix";
 import "@rails/actiontext";
 import "./trix/trix_custom_toolbar";
 import "./trix/trix_custom_config";
-
+import QuillFormController from "./controllers/quill_form_controller"
 
 import $ from 'jquery';
 import { setupTrixToolbar, setupTrixConfig } from "./trix/trix_custom_config";

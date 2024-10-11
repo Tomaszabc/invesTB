@@ -15,10 +15,13 @@ import LightboxController from "./lightbox_controller";
 import SwiperController from "./swiper_controller";
 import ArticlesController from "./articles_controller";
 import Dialog from '@stimulus-components/dialog'
-
+import QuillFormController from "./quill_form_controller"
+import QuillContentController from "./quill_content_controller"
 
 application.register("removals", RemovalsController);
 application.register("lightbox", LightboxController);
 application.register("swiper", SwiperController);
 application.register('articles', ArticlesController);
 application.register('dialog', Dialog);
+application.register("quill-form", QuillFormController)
+application.register("quill-content", QuillContentController)
