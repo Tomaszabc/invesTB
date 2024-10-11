@@ -14,4 +14,11 @@ Rails.application.routes.draw do
   end
 
   root "articles#index"
+
+  namespace :api do
+    namespace :v1 do
+      post 'uploads', to: 'uploads#create'
+    end
+  end
+  
 end
