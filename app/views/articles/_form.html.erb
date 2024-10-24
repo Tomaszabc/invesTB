@@ -14,6 +14,11 @@
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", rows: 5 %>
+  </div>
+
   <div data-controller="quill-form">
   <%= form.label :content, style: "display: block" %>
   <%= form.hidden_field :content, id: 'post_quill_content' %>

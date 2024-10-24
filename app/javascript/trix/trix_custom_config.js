@@ -7,12 +7,4 @@ document.addEventListener("trix-attachment-add", function(event) {
   }
 });
 
-export function setupTrixConfig() {
-  console.log('Setting up Trix configuration');
-  // Twoja niestandardowa konfiguracja dla Trix
-}
 
-export function setupTrixToolbar() {
-  console.log('Setting up Trix toolbar');
-  // Twoje niestandardowe ustawienia paska narzędzi Trix
-}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_27_100707) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_11_085044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,7 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_100707) do
     t.integer "likes_count", default: 0
     t.string "category"
     t.integer "top_article_number"
-    t.boolean "publish"
+    t.boolean "publish", default: false
+    t.text "description"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
@@ -94,7 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_100707) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "display_name"
-    t.string "role"
+    t.string "role", default: "user"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

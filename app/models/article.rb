@@ -10,6 +10,7 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
+  validates :description, presence: true
 
   scope :top_articles, -> { where(category: "top_article") }
 
