@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Nowy artykuł na InvesTB!</h1>
+    
+    <h2><%= @article.title %></h2>
+    
+    <div style="margin: 20px 0;">
+      <%= @article.description %>
+    </div>
+    
+    <p>
+      Aby przeczytać cały artykuł, kliknij poniższy link:
+      <%= link_to 'Czytaj więcej', article_url(@article) %>
+    </p>
+    
+    <hr>
+    <p style="font-size: 12px; color: #666;">
+      Otrzymujesz tego maila, ponieważ subskrybujesz powiadomienia o nowych artykułach na InvesTB.
+      <%= link_to 'Wypisz się z newslettera', unsubscribe_url(@user.unsubscribe_token) %>
+    </p>
+  </body>
+</html>

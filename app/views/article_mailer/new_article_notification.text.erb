@@ -1,0 +1,12 @@
+Nowy artykuł na InvesTB!
+
+<%= @article.title %>
+
+<%= @article.description %>
+
+Aby przeczytać cały artykuł, odwiedź:
+<%= article_url(@article) %>
+
+---
+Otrzymujesz tego maila, ponieważ subskrybujesz powiadomienia o nowych artykułach na InvesTB.
+Aby wypisać się z newslettera, odwiedź: <%= unsubscribe_url(@user.unsubscribe_token) %>

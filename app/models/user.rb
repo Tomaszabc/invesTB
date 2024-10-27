@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  scope :subscribed_to_newsletter, -> { where(newsletter: true) }
+
   has_many :comments, dependent: :destroy
   validates :display_name, presence: true, uniqueness: true
 
