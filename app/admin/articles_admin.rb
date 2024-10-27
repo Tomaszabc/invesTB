@@ -14,6 +14,8 @@ Trestle.resource(:articles) do
     column :category
     column :top_article_number
     column :publish, align: :center
+    column :notification
+    column :notification_sent_at
     actions
   end
 
@@ -21,7 +23,7 @@ Trestle.resource(:articles) do
   form do |article|
     row do
       col(sm: 6) { text_field :title }
-      col(sm: 6) { datetime_field :created_at }
+      col(sm: 6) { static_field :created_at }
     end
 
     row do
@@ -33,11 +35,20 @@ Trestle.resource(:articles) do
       col(sm: 6) { number_field :top_article_number }
       col(sm: 6) { check_box :publish }
     end
+
+    row do
+      if article.notification_sent_at.present?
+        col(sm: 6) { static_field :notification, label: "Notification (already sent, you can't do it again)" }
+      else
+        col(sm: 6) { check_box :notification }
+      end
+      col(sm: 6) { static_field :notification_sent_at }
+    end
   end
 
   # Opcjonalnie: Dostosowanie listy dozwolonych parametrów
   params do |params|
-    params.require(:article).permit(:title, :sequential_number, :category, :top_article_number, :publish)
+    params.require(:article).permit(:title, :sequential_number, :category, :top_article_number, :publish, :notification, :notification_sent_at)
   end
 end
 

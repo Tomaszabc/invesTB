@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_11_085044) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_27_095056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_11_085044) do
     t.integer "top_article_number"
     t.boolean "publish", default: false
     t.text "description"
+    t.boolean "notification", default: false
+    t.datetime "notification_sent_at"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 

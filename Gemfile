@@ -68,6 +68,7 @@ group :development do
   # gem "spring"
 
   gem "standard"
+  gem "letter_opener"
 end
 
 group :development, :test do
