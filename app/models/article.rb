@@ -1,7 +1,6 @@
 class Article < ApplicationRecord
   before_create :set_sequential_number
   before_save :generate_slug
-  after_save :notify_subscribers, if: :should_notify_subscribers?
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -33,13 +32,5 @@ class Article < ApplicationRecord
 
   def set_sequential_number
     self.sequential_number = Article.maximum(:sequential_number).to_i + 1
-  end
-
-  def should_notify_subscribers?
-    saved_change_to_publish? && publish == true
-  end
-
-  def notify_subscribers
-    SendArticleNotificationJob.perform_later(id)
   end
 end
