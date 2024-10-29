@@ -30,6 +30,7 @@ class Article < ApplicationRecord
     slug
   end
 
+
   private
 
   def set_sequential_number
@@ -37,7 +38,7 @@ class Article < ApplicationRecord
   end
 
   def notification_changed_to_true?
-    saved_change_to_notification? && notification?
+    saved_change_to_notification? && notification? && notification_sent_at.nil?
   end
 
   def send_notification_email

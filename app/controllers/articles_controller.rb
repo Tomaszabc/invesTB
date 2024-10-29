@@ -151,7 +151,7 @@ class ArticlesController < ApplicationController
       redirect_to articles_path, alert: "Artykuł nie jest dostępny."
     end
   end
-
+  
   def article_params
     params.require(:article).permit(:title, :content, :article_image, :category, :publish, :description)
   end

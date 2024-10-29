@@ -3,6 +3,6 @@ class ArticleMailer < ApplicationMailer
 
   def notification_email(article)
     @article = article
-    mail(subject: "Notification for Article #{article.title}")
+    mail(subject: "Notification for Article #{article.id}")
   end
 end
