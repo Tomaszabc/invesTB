@@ -42,7 +42,10 @@ class Article < ApplicationRecord
   end
 
   def send_notification_email
-    ArticleMailer.notification_email(self).deliver_now
+    subscribers = ArticleSubscription.pluck(:email)
+    subscribers.each do |email|
+      ArticleMailer.notification_email(self, email).deliver_now
+    end
     update_column(:notification_sent_at, Time.current)
   end
 end
