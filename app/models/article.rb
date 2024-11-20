@@ -19,7 +19,11 @@ class Article < ApplicationRecord
   def resized_article_image
     return unless article_image.attached?
 
-    article_image.variant(resize_to_limit: [700, 350]).processed
+    article_image.variant(
+      resize_to_limit: [420, 224],
+      format: :webp,
+      saver: { quality: 80 }
+      ).processed
   end
 
   def generate_slug

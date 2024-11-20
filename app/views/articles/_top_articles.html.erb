@@ -7,7 +7,7 @@
       <div class="swiper-wrapper">
         <% @top_articles.each do |article| %>
           <div class="swiper-slide">
-            <div class="article-slide" style="background-image: url(<%= article.article_image.attached? ? url_for(article.article_image) : asset_path('article_image.jpg') %>);">
+            <div class="article-slide" style="background-image: url(<%= article.article_image.attached? ? url_for(article.resized_article_image) : asset_path('article_image.jpg') %>);">
               <div class="article-title-container">
                 <h2 class="article-title"><%= link_to article.title, article_path(article) %></h2>
               </div>

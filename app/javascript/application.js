@@ -3,11 +3,12 @@ import "@hotwired/turbo-rails";
 import "./controllers";
 import "trix";
 import "@rails/actiontext";
-import "./trix/trix_custom_toolbar";
-import "./trix/trix_custom_config";
+
 import QuillFormController from "./controllers/quill_form_controller"
 
 import $ from 'jquery';
+import { setupTrixToolbar } from "./trix/trix_custom_toolbar";
+import { setupTrixConfig } from "./trix/trix_custom_config";
 
 
 Rails.start();
